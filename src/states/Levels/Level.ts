@@ -2,7 +2,10 @@ import {GameObject, IGameObjectProps} from "../../game_objects/GameObject";
 import {TestObject} from "../../game_objects/TestObject";
 import {Player} from "../../game_objects/players/Player";
 import {OneDPlayer} from "../../game_objects/players/OneDPlayer";
-import {OneDimensionWallGrey, OneDimensionWallOrange} from "../../game_objects/OneDimension/OneDWall";
+import {
+    OneDimensionGround, OneDimensionWallGray,
+    OneDimensionWallOrange
+} from "../../game_objects/OneDimension/OneDWall";
 import {OneDDoor} from "../../game_objects/OneDimension/OneDDoor";
 import {OneDBlock} from "../../game_objects/OneDimension/OneDBlock";
 
@@ -88,7 +91,8 @@ abstract class Level extends Phaser.State {
                 });
             } else {
                 layer.objects.forEach((obj: any): void => {
-                    this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y, game, obj.properties);
+                    this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y - json.tileheight, game, obj.properties);
+                    console.log(obj.properties);
                 });
             }
         });
@@ -107,11 +111,14 @@ abstract class Level extends Phaser.State {
             case "purple":
                 gameObject = new TestObject(gameObjectProp);
                 break;
-            case "OneDWallGrey":
-                gameObject = new OneDimensionWallGrey(gameObjectProp);
+            case "OneDWallGray":
+                gameObject = new OneDimensionWallGray(gameObjectProp);
                 break;
             case "OneDWallOrange":
                 gameObject = new OneDimensionWallOrange(gameObjectProp);
+                break;
+            case "OneDGround":
+                gameObject = new OneDimensionGround(gameObjectProp);
                 break;
             case "OneDPlayer":
                 gameObject = new OneDPlayer(gameObjectProp);
