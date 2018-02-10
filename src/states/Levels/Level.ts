@@ -2,6 +2,7 @@ import {GameObject, IGameObjectProps} from "../../game_objects/GameObject";
 import {TestObject} from "../../game_objects/TestObject";
 import {Player} from "../../game_objects/players/Player";
 import {OneDPlayer} from "../../game_objects/players/OneDPlayer";
+import {OneDimensionWall} from "../../game_objects/OneDimension/OneDimensionWall";
 
 abstract class Level extends Phaser.State {
     protected gameObjectArray: GameObject[];
@@ -103,6 +104,9 @@ abstract class Level extends Phaser.State {
         switch (keyRef) {
             case "purple":
                 gameObject = new TestObject(gameObjectProp);
+                break;
+            case "OneDimensionWall":
+                gameObject = new OneDimensionWall(gameObjectProp);
                 break;
             case "OneDPlayer":
                 gameObject = new OneDPlayer(gameObjectProp);
