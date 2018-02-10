@@ -1,7 +1,9 @@
 import {GameObject, IGameObjectProps} from "../../game_objects/GameObject";
 import {TestObject} from "../../game_objects/TestObject";
+import {Door} from "../../game_objects/Door";
 import {Player} from "../../game_objects/players/Player";
 import {OneDPlayer} from "../../game_objects/players/OneDPlayer";
+
 import {
     OneDimensionGround, OneDimensionWallGray,
     OneDimensionWallOrange
@@ -9,15 +11,19 @@ import {
 import {OneDDoor} from "../../game_objects/OneDimension/OneDDoor";
 import {OneDBlock} from "../../game_objects/OneDimension/OneDBlock";
 import {OneDKey} from "../../game_objects/OneDimension/OneDKey";
+import {OneDEnemyWalker} from "../../game_objects/OneDimension/OneDEnemyWalker";
+import {OneDEnemyShooter} from "../../game_objects/OneDimension/OneDEnemyShooter";
 
 abstract class Level extends Phaser.State {
     protected gameObjectArray: GameObject[];
     protected abstract tiledJSONKey: string;
     protected player: Player;
+    protected doors: Door[];
 
     public init(...args): void {
         super.init(args);
         this.gameObjectArray = [];
+        this.doors = [];
     }
 
     public create(game: Phaser.Game): void {
@@ -61,6 +67,13 @@ abstract class Level extends Phaser.State {
 
     public followPlayer(game: Phaser.Game): void {
         game.camera.follow(this.player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+    }
+
+    public getAllDoors(): Door[] {
+        return this.doors;
+    }
+    public getDoor(doorID: string): Door {
+        return this.doors[doorID];
     }
 
     protected renderMap(game: Phaser.Game): void {
@@ -125,13 +138,21 @@ abstract class Level extends Phaser.State {
                 gameObject = new OneDPlayer(gameObjectProp);
                 break;
             case "OneDDoor":
-                gameObject = new OneDDoor({...gameObjectProp, destination: additional.destination});
+                const doorTemp: Door = new OneDDoor({...gameObjectProp, destination: additional.destination, doorID: additional.doorID});
+                this.doors[additional.doorID] = doorTemp;
+                gameObject = doorTemp;
                 break;
             case "OneDBlock":
-                gameObject = new OneDBlock({...gameObjectProp, destination: additional.destination});
+                gameObject = new OneDBlock({...gameObjectProp});
                 break;
             case "OneDKey":
-                gameObject = new OneDKey({...gameObjectProp, destination: additional.destination});
+                gameObject = new OneDKey({...gameObjectProp, openDoorID: additional.openDoorID});
+                break;
+            case "OneDEnemyWalker":
+                gameObject = new OneDEnemyWalker({...gameObjectProp});
+                break;
+            case "OneDEnemyShooter":
+                gameObject = new OneDEnemyShooter({...gameObjectProp});
                 break;
         }
 

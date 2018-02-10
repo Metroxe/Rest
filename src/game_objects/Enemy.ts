@@ -1,9 +1,9 @@
 import {GameObject, IGameObjectProps} from "./GameObject";
 
-abstract class Block extends GameObject {
+abstract class Enemy extends GameObject {
     protected destinationState: string;
 
-    constructor(props: IBlockObjectProps) {
+    constructor(props: IEnemyObjectProps) {
         super(props);
     }
 
@@ -12,7 +12,7 @@ abstract class Block extends GameObject {
     }
 }
 
-interface IBlockObjectProps extends IGameObjectProps {
+interface IEnemyObjectProps extends IGameObjectProps {
 }
 
-export {IBlockObjectProps, Block};
+export {IEnemyObjectProps, Enemy};
