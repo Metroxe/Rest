@@ -36,7 +36,7 @@ class Gamogori {
     private create(): void {
         this.game.state.add("TextLevel", TextLevel);
         this.game.state.add("TestLevel", TestLevel);
-        this.game.state.start("TextLevel");
+        this.game.state.start("TestLevel");
     }
 
     private update(): void {
