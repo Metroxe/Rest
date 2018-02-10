@@ -9,7 +9,7 @@ abstract class Block extends GameObject {
     }
 
     public collideWithPlayer(): void {
-        this.game.state.start(this.destinationState);
+
     }
 }
 

@@ -1,12 +1,10 @@
-import get from "lodash/get";
-
 class Inventory {
     protected ref: {[key: string]: number};
 
     private static instance: Inventory;
 
     private constructor() {
-        // ...
+        this.ref = {};
     }
     public static getInstance(): Inventory {
         if (!Inventory.instance) {
@@ -20,10 +18,13 @@ class Inventory {
         return count;
     }
     public getItem(key: string): number{
-        if (get(this.ref, key, null) === null) {
+        if (!this.ref[key]) {
             return 0;
         }
         return this.ref[key];
+    }
+    public clearInventory(): void {
+        this.ref = {};
     }
 }
 
