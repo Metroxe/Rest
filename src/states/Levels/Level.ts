@@ -20,7 +20,9 @@ abstract class Level extends Phaser.State {
             gameObject.attachLevel(this);
             gameObject.create();
         });
-        this.followPlayer(game);
+        if (this.player) {
+            this.followPlayer(game);
+        }
     }
 
     public preload(game: Phaser.Game): void {

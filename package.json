@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -w",
     "build": "rm -rf lib && node_modules/.bin/tsc",
-    "clean": "rm -rf lib && rm -rf node_modules"
+    "clean": "rm -rf lib && rm -rf node_modules",
+    "start": "node_modules/.bin/electron ."
   },
   "repository": {
     "type": "git",

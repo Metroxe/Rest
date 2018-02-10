@@ -2,6 +2,7 @@ import Game = Phaser.Game;
 import IGameConfig = Phaser.IGameConfig;
 import {TestLevel} from "./states/Levels/TestLevel";
 import {TestObject} from "./game_objects/TestObject";
+import {TextLevel} from "./states/Levels/TextLevel";
 
 class Gamogori {
 
@@ -33,8 +34,9 @@ class Gamogori {
     }
 
     private create(): void {
+        this.game.state.add("TextLevel", TextLevel);
         this.game.state.add("TestLevel", TestLevel);
-        this.game.state.start("TestLevel");
+        this.game.state.start("TextLevel");
     }
 
     private update(): void {
