@@ -21,7 +21,7 @@ class OneDimensionGround extends GameObject {
     protected key: string = "OneDGround";
     protected frameWidth: number = 128;
     protected frameHeight: number = 128;
-    protected startingFrame: number = 1;
+    protected startingFrame: number = 0;
     public update(): void {
         // no nothings
     }

@@ -6,10 +6,15 @@ abstract class Door extends GameObject {
     constructor(props: IDoorObjectProps) {
         super(props);
         this.destinationState = props.destination;
+        console.log("dest statee", this.destinationState);
+
+        this.collideWithPlayer = this.collideWithPlayer.bind(this);
     }
 
+
     public collideWithPlayer(): void {
-        this.game.state.start(this.destinationState);
+        console.log(this.destinationState);
+        this.props.game.state.start(this.destinationState);
     }
 }
 

@@ -90,7 +90,8 @@ abstract class Level extends Phaser.State {
                 });
             } else {
                 layer.objects.forEach((obj: any): void => {
-                    this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y, game, obj.properties);
+                    this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y - json.tileheight, game, obj.properties);
+                    console.log(obj.properties);
                 });
             }
         });
