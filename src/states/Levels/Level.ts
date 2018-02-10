@@ -7,6 +7,8 @@ import {
     OneDimensionWallOrange,
 } from "../../game_objects/OneDimension/OneDWall";
 import {OneDDoor} from "../../game_objects/OneDimension/OneDDoor";
+import {OneDBlock} from "../../game_objects/OneDimension/OneDBlock";
+import {OneDKey} from "../../game_objects/OneDimension/OneDKey";
 
 abstract class Level extends Phaser.State {
     protected gameObjectArray: GameObject[];
@@ -128,7 +130,13 @@ abstract class Level extends Phaser.State {
                 break;
             case "OneDDoor":
                 gameObject = new OneDDoor({...gameObjectProp, destination: additional.destination});
-
+                break;
+            case "OneDBlock":
+                gameObject = new OneDBlock({...gameObjectProp, destination: additional.destination});
+                break;
+            case "OneDKey":
+                gameObject = new OneDKey({...gameObjectProp, destination: additional.destination});
+                break;
         }
 
         if (gameObject) {

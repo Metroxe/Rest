@@ -33,6 +33,10 @@ class Gamogori {
     }
 
     private preload(): void {
+        // audio
+        this.game.load.audio("d1_key", "assets/sfx/d1_key.wav");
+
+        // level maps
         this.game.load.json("maze", "tiled_maps/maze.json");
         this.game.load.json("lvl1-1", "tiled_maps/dream_1/lvl1-1.json");
         this.game.load.json("lvl1-2", "tiled_maps/dream_1/lvl1-2.json");
