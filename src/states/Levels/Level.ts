@@ -2,6 +2,11 @@ import {GameObject, IGameObjectProps} from "../../game_objects/GameObject";
 import {TestObject} from "../../game_objects/TestObject";
 import {Player} from "../../game_objects/players/Player";
 import {OneDPlayer} from "../../game_objects/players/OneDPlayer";
+import {
+    OneDimensionGround, OneDimensionWallGray,
+    OneDimensionWallOrange
+} from "../../game_objects/OneDimension/OneDWall";
+import {OneDDoor} from "../../game_objects/OneDimension/OneDDoor";
 
 abstract class Level extends Phaser.State {
     protected gameObjectArray: GameObject[];
@@ -85,13 +90,13 @@ abstract class Level extends Phaser.State {
                 });
             } else {
                 layer.objects.forEach((obj: any): void => {
-                    this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y, game);
+                    this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y, game, obj.properties);
                 });
             }
         });
     }
 
-    private renderGameObject(keyRef: string, x: number, y: number, game: Phaser.Game): void {
+    private renderGameObject(keyRef: string, x: number, y: number, game: Phaser.Game, additional?: any): void {
         let gameObject: GameObject;
 
         const gameObjectProp: IGameObjectProps = {
@@ -104,9 +109,21 @@ abstract class Level extends Phaser.State {
             case "purple":
                 gameObject = new TestObject(gameObjectProp);
                 break;
+            case "OneDWallGray":
+                gameObject = new OneDimensionWallGray(gameObjectProp);
+                break;
+            case "OneDWallOrange":
+                gameObject = new OneDimensionWallOrange(gameObjectProp);
+                break;
+            case "OneDGround":
+                gameObject = new OneDimensionGround(gameObjectProp);
+                break;
             case "OneDPlayer":
                 gameObject = new OneDPlayer(gameObjectProp);
                 break;
+            case "OneDDoor":
+                gameObject = new OneDDoor({...gameObjectProp, destination: additional.destination});
+
         }
 
         if (gameObject) {
