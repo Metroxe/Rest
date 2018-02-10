@@ -7,7 +7,7 @@ class Gamogori {
 
     private config: IGameConfig = {
         width: 1000,
-        height: 1000,
+        height: 700,
         renderer: Phaser.AUTO,
         antialias: true,
         multiTexture: true,
@@ -28,7 +28,7 @@ class Gamogori {
 
     private preload(): void {
         this.game.load.json("maze", "tiled_maps/maze.json");
-        this.game.physics.startSystem(Phaser.Physics.ARCADE)
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
         // new TestObject({x: 0, y: 0, game: this.game}).preload();
     }
 

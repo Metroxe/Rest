@@ -1,7 +1,11 @@
+import {Level} from "../states/Levels/Level";
+
 abstract class GameObject {
-    protected sprite: Phaser.Sprite;
+    public sprite: Phaser.Sprite;
     protected game: Phaser.Game;
     protected props: IGameObjectProps;
+    protected level: Level;
+    protected collidable: boolean = true;
     protected abstract filePath: string;
     protected abstract key: string;
     protected abstract frameWidth: number;
@@ -11,24 +15,53 @@ abstract class GameObject {
        this.props = props;
     }
 
+    public attachLevel(level: Level): void {
+        this.level = level;
+    }
+
     public preload(): void {
         this.props.game.load.spritesheet(this.key, this.filePath, this.frameWidth, this.frameHeight);
     }
 
-    public render(): void {
+    public create(): void {
         this.sprite = this.props.game.add.sprite(this.props.x, this.props.y, this.key);
         this.enablePhysics();
+        this.sprite.body.immovable = true;
     }
 
     public update(): void {
-        this.props.game.physics.arcade.collide(this.sprite, , this.collideWithPlayer)
+        if (this.sprite !== this.level.getPlayer().sprite && this.collidable) {
+            this.props.game.physics.arcade.collide(this.sprite, this.level.getPlayer().sprite, this.collideWithPlayer);
+        }
+
+        this.level.getGameObjectArray().forEach((gameObject: GameObject) => {
+            if (this.sprite !== gameObject.sprite && this.collidable && gameObject.sprite !== this.level.getPlayer().sprite) {
+                this.props.game.physics.arcade.collide(this.sprite, gameObject, this.generalCollision);
+            }
+        });
+
+        this.handleAnimation();
     }
 
     public enablePhysics(): void {
-        this.props.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+        this.props.game.physics.arcade.enable(this.sprite);
     }
 
-    public abstract collideWithPlayer(): void
+    protected collideWithPlayer(): void {
+        // Write in Child
+    }
+
+    protected generalCollision(): void {
+        // Write in child
+    }
+
+    protected handleAnimation(): void {
+        // Write in child
+    }
+
+    protected setNotImmovable(): void {
+        this.sprite.body.immovable = false;
+    }
 }
 
 interface IGameObjectProps {
