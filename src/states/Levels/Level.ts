@@ -4,7 +4,7 @@ import {Player} from "../../game_objects/players/Player";
 import {OneDPlayer} from "../../game_objects/players/OneDPlayer";
 import {
     OneDimensionGround, OneDimensionWallGray,
-    OneDimensionWallOrange
+    OneDimensionWallOrange,
 } from "../../game_objects/OneDimension/OneDWall";
 import {OneDDoor} from "../../game_objects/OneDimension/OneDDoor";
 
@@ -59,6 +59,10 @@ abstract class Level extends Phaser.State {
 
     public followPlayer(game: Phaser.Game): void {
         game.camera.follow(this.player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+    }
+
+    public getTiledJSON(game: Phaser.game): void {
+        return game.cache.getJSON(this.tiledJSONKey, false);
     }
 
     protected renderMap(game: Phaser.Game): void {

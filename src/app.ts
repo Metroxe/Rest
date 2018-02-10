@@ -16,6 +16,7 @@ class Gamogori {
         renderer: Phaser.AUTO,
         antialias: true,
         multiTexture: true,
+        roundPixels: false,
         state: {
             preload: this.preload,
             create: this.create,
