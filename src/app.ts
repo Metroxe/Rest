@@ -1,12 +1,13 @@
 import Game = Phaser.Game;
 import IGameConfig = Phaser.IGameConfig;
 import {TestLevel} from "./states/Levels/TestLevel";
+import {TestObject} from "./game_objects/TestObject";
 
 class Gamogori {
 
     private config: IGameConfig = {
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 1000,
         renderer: Phaser.AUTO,
         antialias: true,
         multiTexture: true,
@@ -26,7 +27,9 @@ class Gamogori {
     }
 
     private preload(): void {
-        //
+        this.game.load.json("maze", "tiled_maps/maze.json");
+        this.game.physics.startSystem(Phaser.Physics.ARCADE)
+        // new TestObject({x: 0, y: 0, game: this.game}).preload();
     }
 
     private create(): void {

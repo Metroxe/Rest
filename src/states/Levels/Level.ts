@@ -1,54 +1,81 @@
+import {GameObject, IGameObjectProps} from "../../game_objects/GameObject";
+import {TestObject} from "../../game_objects/TestObject";
+
 abstract class Level extends Phaser.State {
-    public create(game: Phaser.Game): void {
-        super.create(game);
-    }
+    protected gameObjectArray: GameObject[];
+    protected abstract tiledJSONKey: string;
 
     public init(...args): void {
         super.init(args);
+        this.gameObjectArray = [];
     }
 
-    public loadRender(game: Phaser.Game): void {
-        super.loadRender(game);
-    }
-
-    public loadUpdate(game: Phaser.Game): void {
-        super.loadUpdate(game);
-    }
-
-    public paused(game: Phaser.Game): void {
-        super.paused(game);
-    }
-
-    public pauseUpdate(game: Phaser.Game): void {
-        super.pauseUpdate(game);
+    public create(game: Phaser.Game): void {
+        super.create(game);
+        this.gameObjectArray.forEach((gameObject: GameObject) => {
+            gameObject.render();
+        });
     }
 
     public preload(game: Phaser.Game): void {
         super.preload(game);
-    }
-
-    public preRender(game: Phaser.Game, elapsedTime: number): void {
-        super.preRender(game, elapsedTime);
-    }
-
-    public render(game: Phaser.Game): void {
-        super.render(game);
-    }
-
-    public resize(width: number, height: number): void {
-        super.resize(width, height);
-    }
-
-    public resumed(game: Phaser.Game): void {
-        super.resumed(game);
-    }
-
-    public shutdown(game: Phaser.Game): void {
-        super.shutdown(game);
+        this.renderMap(game);
+        this.gameObjectArray.forEach((gameObject: GameObject) => {
+            gameObject.preload();
+        });
     }
 
     public update(game: Phaser.Game): void {
         super.update(game);
+        this.gameObjectArray.forEach((gameObject: GameObject) => {
+            gameObject.update();
+        });
+    }
+
+    protected renderMap(game: Phaser.Game): void {
+        const json: any = game.cache.getJSON(this.tiledJSONKey, false);
+        this.renderTileset(json, game);
+    }
+
+    private renderTileset(json: any, game: Phaser.Game): void {
+        const ref: any = {};
+
+        json.tilesets.forEach((tileset: any): void => {
+            Object.keys(tileset.tileproperties).forEach((key: string): void => {
+                const num: number = parseInt(key);
+                const regKey: string = (num + tileset.firstgid).toString();
+                ref[regKey] = tileset.tileproperties[key].gameObjectID;
+            });
+        });
+
+        json.layers.forEach((layer: any) => {
+            layer.data.forEach((numRef: any, i: number) => {
+                const keyRef: string = numRef.toString();
+                // const y: number = Math.floor(i / (layer.width - 1)) * json.tileheight;
+                const y: number = Math.floor((i / layer.width)) * json.tileheight;
+                const x: number = (i % layer.width) * json.tilewidth;
+                this.renderGameObject(ref[keyRef], x, y, game);
+            });
+        });
+    }
+
+    private renderGameObject(keyRef: string, x: number, y: number, game: Phaser.Game): void {
+        let gameObject: GameObject;
+
+        const gameObjectProp: IGameObjectProps = {
+            game,
+            x,
+            y,
+        };
+
+        switch (keyRef) {
+            case "purple":
+                gameObject = new TestObject(gameObjectProp);
+        }
+
+        if (gameObject) {
+            this.gameObjectArray.push(gameObject);
+        }
     }
 }
 
