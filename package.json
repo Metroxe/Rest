@@ -1,0 +1,28 @@
+{
+  "name": "gamagori",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w",
+    "build": "rm -rf lib && node_modules/.bin/tsc",
+    "clean": "rm -rf lib && rm -rf node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Metroxe/Gamagori.git"
+  },
+  "author": "Christopher Powroznik <chrispow96@gmail.com> (https://github.com/Metroxe)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Metroxe/Gamagori/issues"
+  },
+  "homepage": "https://github.com/Metroxe/Gamagori#readme",
+  "dependencies": {
+    "phaser-ce": "^2.10.0",
+    "ts-loader": "^3.5.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.1"
+  }
+}
