@@ -173,12 +173,7 @@ abstract class Level extends Phaser.State {
             case "eightBitPlayer":
                 gameObject = new EightBitPlayer({...gameObjectProp});
                 break;
-            case "bush_0":
-                gameObject = new BushZero({...gameObjectProp});
-                break;
-            case "bush_1":
-                gameObject = new BushOne({...gameObjectProp});
-                break;
+
         }
 
         if (gameObject) {

@@ -4,7 +4,9 @@ import {TestLevel} from "./states/Levels/TestLevel";
 import {DreamOneToOne} from "./states/Levels/DreamOneToOne";
 import {DreamOneToTwo} from "./states/Levels/DreamOneToTwo";
 import {DreamOneToThree} from "./states/Levels/DreamOneToThree";
-import {DreamOneToFour} from "./states/Levels/DreamOneToFour";
+import {DreamTwoToOne} from "./states/Levels/DreamTwoToOne";
+import {DreamTwoToTwo} from "./states/Levels/DreamTwoToTwo";
+import {DreamTwoToFour} from "./states/Levels/DreamTwoToFour";
 import {Introduction} from "./states/Levels/TextLevels/Introduction";
 
 class Gamogori {
@@ -41,7 +43,9 @@ class Gamogori {
         this.game.load.json("lvl1-1", "tiled_maps/dream_1/lvl1-1.json");
         this.game.load.json("lvl1-2", "tiled_maps/dream_1/lvl1-2.json");
         this.game.load.json("lvl1-3", "tiled_maps/dream_1/lvl1-3.json");
-        this.game.load.json("lvl1-4", "tiled_maps/dream_1/lvl1-4.json");
+        this.game.load.json("lvl2-1", "tiled_maps/dream_1/lvl2-1.json");
+        this.game.load.json("lvl2-2", "tiled_maps/dream_1/lvl2-2.json");
+        this.game.load.json("lvl2-4", "tiled_maps/dream_1/lvl2-4.json");
         this.game.load.image("keyIcon", "assets/pink.png");
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         // new TestObject({x: 0, y: 0, game: this.game}).preload();
@@ -53,7 +57,9 @@ class Gamogori {
         this.game.state.add("lvl1-1", DreamOneToOne);
         this.game.state.add("lvl1-2", DreamOneToTwo);
         this.game.state.add("lvl1-3", DreamOneToThree);
-        this.game.state.add("lvl1-4", DreamOneToFour);
+        this.game.state.add("lvl2-1", DreamTwoToOne);
+        this.game.state.add("lvl2-2", DreamTwoToTwo);
+        this.game.state.add("lvl2-4", DreamTwoToFour);
         this.game.state.start("Introduction");
     }
 
