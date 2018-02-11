@@ -45,7 +45,9 @@ class Gamogori {
         this.game.load.json("lvl2-2", "tiled_maps/dream_2/lvl2_2.json");
         this.game.load.json("lvl2-4", "tiled_maps/dream_2/lvl2_4.json");
         this.game.load.image("keyIcon", "assets/pink.png");
+        this.game.load.image("keyIcon", "assets/pink.png");
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        this.game.load.spritesheet("bullet", "assets/bullet.png", 128, 128);
         // new TestObject({x: 0, y: 0, game: this.game}).preload();
     }
 

@@ -76,6 +76,14 @@ abstract class Level extends Phaser.State {
         return this.gameObjectArray;
     }
 
+    public addToObjectArray(gameObject: GameObject): void {
+        this.gameObjectArray.push(gameObject);
+    }
+
+    public removeObjectFromArray(gameObject: GameObject): void {
+        this.gameObjectArray.splice(this.gameObjectArray.indexOf(gameObject, 1));
+    }
+
     public setPlayer(player: Player): void {
         this.player = player;
     }

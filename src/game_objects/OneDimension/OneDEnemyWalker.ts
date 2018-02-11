@@ -2,12 +2,12 @@ import {Enemy} from "../Enemy";
 import {IGameObjectProps} from "../GameObject";
 
 class OneDEnemyWalker extends Enemy  {
+    public collidable: boolean = true;
     protected filePath: string = "assets/characters_one_dimension.png";
     protected key: string = "OneDEnemyWalker";
     protected frameWidth: number = 128;
     protected frameHeight: number = 128;
     protected startingFrame: number = 0;
-    protected collidable: boolean = true;
     private xAxis: boolean;
     private offset: number;
     private startingLoc: number;
