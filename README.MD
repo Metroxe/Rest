@@ -26,3 +26,6 @@ Our inspirations were of course NES games and the retro games of old, such as Th
 
 We decided to use PhaserJS Community Edition to build our game, as our development team comes from an extensive Javascript background and we shared a strong desire to hone our Typescript (OOP Javascript) skills.
 
+## Design
+
+We decided to use an 1-bit style featuring simple colors and squares for the first dream. For the second dream we decided to go with an 8-bit style. We used Adobe Photoshop and basic colour palette. For the video introduction we used vector illustrations created on Adobe Illustrator and we put them together in Adobe After Effects. All of our illustrations, even the ones inspired on retro games  were created by ourselves.
