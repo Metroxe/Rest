@@ -1,4 +1,5 @@
 { "height":14,
+ "infinite":false,
  "layers":[
         {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -33,18 +34,22 @@
                  "name":"",
                  "properties":
                     {
-                     "gameObjectID":"OneDEnemyWalker"
+                     "gameObjectID":"OneDEnemyWalker",
+                     "offset":-1280,
+                     "xAxis":false
                     },
                  "propertytypes":
                     {
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "offset":"int",
+                     "xAxis":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":512,
-                 "y":384
+                 "x":1152,
+                 "y":1664
                 }, 
                 {
                  "gid":7,
@@ -65,8 +70,8 @@
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":768,
-                 "y":512
+                 "x":256,
+                 "y":1536
                 }, 
                 {
                  "gid":8,
@@ -85,8 +90,8 @@
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":512,
-                 "y":512
+                 "x":256,
+                 "y":1024
                 }, 
                 {
                  "gid":9,
@@ -117,7 +122,7 @@
  "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.0.3",
+ "tiledversion":"1.1.2",
  "tileheight":128,
  "tilesets":[
         {

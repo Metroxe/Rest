@@ -32,8 +32,6 @@ abstract class Player extends GameObject {
         this.sprite.body.acceleration = 0;
         this.sprite.body.drag = 0;
         this.sprite.body.friction = 0;
-        console.log("PLAYER THIS: ", this);
-        this.door = new Door({player: this});
     }
 
     public update(): void {

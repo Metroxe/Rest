@@ -19,7 +19,7 @@ import {BushOne, BushZero} from "../../game_objects/EightBit/EightBitObjects";
 
 abstract class Level extends Phaser.State {
     public abstract levelName: string;
-    protected gameObjectArray: GameObject[];
+    public gameObjectArray: GameObject[];
     protected abstract tiledJSONKey: string;
     protected player: Player;
     protected doors: Door[];
@@ -165,7 +165,7 @@ abstract class Level extends Phaser.State {
                 gameObject = new OneDKey({...gameObjectProp, openDoorID: additional.openDoorID});
                 break;
             case "OneDEnemyWalker":
-                gameObject = new OneDEnemyWalker({...gameObjectProp});
+                gameObject = new OneDEnemyWalker({...gameObjectProp, xAxis: additional.xAxis, offset: additional.offset});
                 break;
             case "OneDEnemyShooter":
                 gameObject = new OneDEnemyShooter({...gameObjectProp});
