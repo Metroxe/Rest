@@ -47,7 +47,8 @@
     "max-file-line-count": [false],
     "ordered-imports": false,
     "no-trailing-whitespace": false,
-    "radix": false
+    "radix": false,
+    "no-console": false
   },
   "rulesDirectory": []
 }

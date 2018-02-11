@@ -7,15 +7,18 @@ abstract class GameObject {
     protected level: Level;
     protected collidable: boolean = true;
     protected startingFrame: number = 0;
-    protected abstract filePath: string;
+    protected abstract filePath: string | string[];
     protected abstract key: string;
     protected abstract frameWidth: number;
     protected abstract frameHeight: number;
 
     constructor(props: IGameObjectProps) {
-       this.props = props;
-
-       this.handleSfx = this.handleSfx.bind(this);
+        this.props = props;
+        this.collideWithPlayer = this.collideWithPlayer.bind(this);
+        this.generalCollision = this.generalCollision.bind(this);
+        this.handleAnimation = this.handleAnimation.bind(this);
+        this.handleSfx = this.handleSfx.bind(this);
+        this.create = this.create.bind(this);
     }
 
     public attachLevel(level: Level): void {
@@ -23,13 +26,18 @@ abstract class GameObject {
     }
 
     public preload(): void {
-        this.props.game.load.spritesheet(this.key, this.filePath, this.frameWidth, this.frameHeight);
+        if (typeof this.filePath === "string") {
+            this.props.game.load.spritesheet(this.key, this.filePath, this.frameWidth, this.frameHeight);
+        } else {
+            this.props.game.load.images(this.filePath, this.filePath);
+        }
     }
 
     public create(): void {
         this.sprite = this.props.game.add.sprite(this.props.x, this.props.y, this.key, this.startingFrame);
         this.enablePhysics();
         this.sprite.body.immovable = true;
+        this.sprite.body.facing = Phaser.DOWN;
     }
 
     public update(): void {

@@ -7,21 +7,24 @@ class TextBox {
     private letterDelay: number = 25;
     private lineDelay: number = 800;
     private line: string[] = [];
+    private callback: () => void;
 
     constructor(props: ITextBox) {
         this.content = props.content;
         this.game = props.game;
     }
 
-    public start(): void {
+    public start(callback: () => void): void {
         this.text = this.game.add.text(32, 32, "", { font: "15px Arial", fill: "#19de65", wordWrap: true, wordWrapWidth: 450});
         this.text.z = 9999;
         this.text.setTextBounds(16, 16, 450, 568);
+        this.callback = callback;
         this.nextLine();
     }
 
     private nextLine(): void {
         if (this.lineIndex === this.content.length) {
+            setTimeout(this.callback, 3000);
             return;
         }
 
@@ -55,6 +58,7 @@ class TextBox {
             this.game.time.events.add(this.lineDelay, this.nextLine, this);
         }
     }
+
 
 }
 
