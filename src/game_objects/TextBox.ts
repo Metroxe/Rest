@@ -4,8 +4,8 @@ class TextBox {
     private game: Phaser.Game;
     private wordIndex: number = 0;
     private lineIndex: number = 0;
-    private wordDelay: number = 200;
-    private lineDelay: number = 200;
+    private letterDelay: number = 25;
+    private lineDelay: number = 800;
     private line: string[] = [];
 
     constructor(props: ITextBox) {
@@ -14,8 +14,9 @@ class TextBox {
     }
 
     public start(): void {
-        this.text = this.game.add.text(32, 32, "", { font: "15px Arial", fill: "#19de65"});
+        this.text = this.game.add.text(32, 32, "", { font: "15px Arial", fill: "#19de65", wordWrap: true, wordWrapWidth: 450});
         this.text.z = 9999;
+        this.text.setTextBounds(16, 16, 450, 568);
         this.nextLine();
     }
 
@@ -24,14 +25,14 @@ class TextBox {
             return;
         }
 
-        //  Split the current line on spaces, so one word per array element
-        this.line = this.content[this.lineIndex].split(" ");
+        //  Split the current line on letter, so one letter per array element
+        this.line = this.content[this.lineIndex].split("");
 
         //  Reset the word index to zero (the first word in the line)
         this.wordIndex = 0;
 
         //  Call the 'nextWord' function once for each word in the line (line.length)
-        this.game.time.events.repeat(this.wordDelay, this.line.length, this.nextWord, this);
+        this.game.time.events.repeat(this.letterDelay, this.line.length, this.nextWord, this);
 
         //  Advance to the next line
         this.lineIndex++;
@@ -39,7 +40,7 @@ class TextBox {
 
     private nextWord(): void {
         //  Add the next word onto the text string, followed by a space
-        this.text.text = this.text.text.concat(this.line[this.wordIndex] + " ");
+        this.text.text = this.text.text.concat(this.line[this.wordIndex]);
 
         //  Advance the word index to the next word in the line
         this.wordIndex++;
@@ -48,7 +49,7 @@ class TextBox {
         if (this.wordIndex === this.line.length) {
 
             //  Add a carriage return
-            this.text.text = this.text.text.concat("\n");
+            this.text.text = this.text.text.concat("\n\n");
 
             //  Get the next line after the lineDelay amount of ms has elapsed
             this.game.time.events.add(this.lineDelay, this.nextLine, this);
