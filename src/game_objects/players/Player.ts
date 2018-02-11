@@ -74,9 +74,7 @@ abstract class Player extends GameObject {
         if (livesLeft === 0) {
             // end the game if the player has lost all their lives
             // send back to title screen
-            // TODO
-
-            alert("game over");
+            this.props.game.state.start("Introduction");
         } else {
             // else restart the level
             this.props.game.state.start(this.level.key);

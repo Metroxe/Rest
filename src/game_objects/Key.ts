@@ -2,7 +2,6 @@ import {GameObject, IGameObjectProps} from "./GameObject";
 import {Door} from "./Door";
 
 abstract class Key extends GameObject {
-    protected destinationState: string;
     protected openDoorID: string;
 
     protected collideAudio: string;

@@ -91,7 +91,7 @@
                  "properties":
                     {
                      "enemyID":"D",
-                     "gameObjectID":"8bit_enemy"
+                     "gameObjectID":"8bit_shooter"
                     },
                  "propertytypes":
                     {
@@ -189,7 +189,7 @@
                  "properties":
                     {
                      "enemyID":"A",
-                     "gameObjectID":"8bit_enemy"
+                     "gameObjectID":"8bit_shooter"
                     },
                  "propertytypes":
                     {
@@ -211,19 +211,23 @@
                  "properties":
                     {
                      "enemyID":"C",
-                     "gameObjectID":"8bit_enemy"
+                     "gameObjectID":"8bit_enemy",
+                     "offset":-1024,
+                     "xAxis":false
                     },
                  "propertytypes":
                     {
                      "enemyID":"string",
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "offset":"int",
+                     "xAxis":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":1152,
-                 "y":1408
+                 "x":1408,
+                 "y":1792
                 }, 
                 {
                  "gid":79,
@@ -233,19 +237,23 @@
                  "properties":
                     {
                      "enemyID":"B",
-                     "gameObjectID":"8bit_enemy"
+                     "gameObjectID":"8bit_enemy",
+                     "offset":768,
+                     "xAxis":false
                     },
                  "propertytypes":
                     {
                      "enemyID":"string",
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "offset":"int",
+                     "xAxis":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
                  "x":1152,
-                 "y":1536
+                 "y":1152
                 }, 
                 {
                  "gid":49,

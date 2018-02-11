@@ -211,18 +211,22 @@
                  "properties":
                     {
                      "enemyID":"A",
-                     "gameObjectID":"8bit_enemy"
+                     "gameObjectID":"8bit_enemy",
+                     "offset":896,
+                     "xAxis":true
                     },
                  "propertytypes":
                     {
                      "enemyID":"string",
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "offset":"int",
+                     "xAxis":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":896,
+                 "x":640,
                  "y":1536
                 }, 
                 {

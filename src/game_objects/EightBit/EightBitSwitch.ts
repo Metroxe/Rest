@@ -1,6 +1,7 @@
 import {GameObject, IGameObjectProps} from "../GameObject";
+import {Switch} from "../Switch";
 
-class EightBitSwitch extends GameObject {
+class EightBitSwitch extends Switch {
     protected filePath: string = "assets/8bit_Inanimate_elements.png";
     protected key: string = "8bit_switch";
     protected frameWidth: number = 128;
@@ -9,10 +10,4 @@ class EightBitSwitch extends GameObject {
     protected pressedFrame: number = 58;
 }
 
-interface ISwitchObjectProps extends IGameObjectProps {
-    openDoorID: string;
-    openSwitchDoorID: string;
-    selfReset?: boolean;
-}
-
-export {ISwitchObjectProps, EightBitSwitch};
+export {EightBitSwitch};

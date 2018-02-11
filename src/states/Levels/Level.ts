@@ -24,6 +24,8 @@ import {EightBitStump} from "../../game_objects/EightBit/EightBitStump";
 import {EightBitDoor} from "../../game_objects/EightBit/EightBitDoor";
 import {EightBitKey} from "../../game_objects/EightBit/EightBitKey";
 import {EightBitSwitch} from "../../game_objects/EightBit/EightBitSwitch";
+import {EightBitShooter} from "../../game_objects/EightBit/EightBitShooter";
+import {EightBitEnemyWalker} from "../../game_objects/EightBit/EightBitEnemyWalker";
 
 abstract class Level extends Phaser.State {
     public abstract levelName: string;
@@ -31,12 +33,14 @@ abstract class Level extends Phaser.State {
     protected abstract tiledJSONKey: string;
     protected player: Player;
     protected doors: Door[];
+    protected switchDoors: Door[];
     protected userInterface: UserInterface;
 
     public init(...args): void {
         super.init(args);
         this.gameObjectArray = [];
         this.doors = [];
+        this.switchDoors = [];
     }
 
     public create(game: Phaser.Game): void {
@@ -106,6 +110,14 @@ abstract class Level extends Phaser.State {
 
     public getDoor(doorID: string): Door {
         return this.doors[doorID];
+    }
+
+    public getAllSwitchDoors(): Door[] {
+        return this.switchDoors;
+    }
+
+    public getSwitchDoor(doorID: string): Door {
+        return this.switchDoors[doorID];
     }
 
     protected renderMap(game: Phaser.Game): void {
@@ -239,13 +251,22 @@ abstract class Level extends Phaser.State {
                 gameObject = new EightBitStump({...gameObjectProp});
                 break;
             case "8bit_door":
-                gameObject = new EightBitDoor({...gameObjectProp, doorID: additional.doorID, destination: additional.destination});
+                const eightBitDoorTemp: Door = new EightBitDoor({...gameObjectProp, doorID: additional.doorID, switchDoorID: additional.switchDoorID, destination: additional.destination});
+                this.doors[additional.doorID] = eightBitDoorTemp;
+                this.switchDoors[additional.switchDoorID] = eightBitDoorTemp;
+                gameObject = eightBitDoorTemp;
                 break;
             case "8bit_key":
                 gameObject = new EightBitKey({...gameObjectProp, openDoorID: additional.openDoorID});
                 break;
             case "8bit_switch":
                 gameObject = new EightBitSwitch({...gameObjectProp, openDoorID: additional.openDoorID, openSwitchDoorID: additional.openSwitchDoorID, selfReset: additional.selfReset});
+                break;
+            case "8bit_shooter":
+                gameObject = new EightBitShooter({...gameObjectProp});
+                break;
+            case "8bit_enemy":
+                gameObject = new EightBitEnemyWalker({...gameObjectProp, xAxis: additional.xAxis, offset: additional.offset});
                 break;
 
         }
