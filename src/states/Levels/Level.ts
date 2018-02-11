@@ -9,6 +9,7 @@ import {
     OneDimensionWallOrange,
 } from "../../game_objects/OneDimension/OneDWall";
 import {OneDDoor} from "../../game_objects/OneDimension/OneDDoor";
+import {UserInterface} from "../../UserInterface";
 import {OneDBlock} from "../../game_objects/OneDimension/OneDBlock";
 import {OneDKey} from "../../game_objects/OneDimension/OneDKey";
 import {OneDEnemyWalker} from "../../game_objects/OneDimension/OneDEnemyWalker";
@@ -16,10 +17,12 @@ import {OneDEnemyShooter} from "../../game_objects/OneDimension/OneDEnemyShooter
 import {EightBitPlayer} from "../../game_objects/players/EightBitPlayer";
 
 abstract class Level extends Phaser.State {
+    public abstract levelName: string;
     protected gameObjectArray: GameObject[];
     protected abstract tiledJSONKey: string;
     protected player: Player;
     protected doors: Door[];
+    protected userInterface: UserInterface;
 
     public init(...args): void {
         super.init(args);
@@ -37,6 +40,11 @@ abstract class Level extends Phaser.State {
         if (this.player) {
             this.followPlayer(game);
         }
+
+        this.userInterface = new UserInterface({game, player: this.getPlayer(), level: this});
+        this.userInterface.create();
+
+        console.log("the level name is: ", this.levelName);
     }
 
     public preload(game: Phaser.Game): void {
@@ -52,6 +60,7 @@ abstract class Level extends Phaser.State {
         this.gameObjectArray.forEach((gameObject: GameObject) => {
             gameObject.update();
         });
+        this.userInterface.update();
     }
 
     public getGameObjectArray(): GameObject[] {
