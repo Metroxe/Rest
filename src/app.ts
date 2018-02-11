@@ -78,6 +78,7 @@ class Gamogori {
         this.game.state.add("lvl2-4", DreamTwoToFour);
         this.game.state.add("lvl2-4t", DreamTwoFourText);
         this.game.state.add("ending", DreamCliffHangerText);
+        this.game.state.start("introVideo");
         this.game.state.start("lvl2-1t");
     }
 
