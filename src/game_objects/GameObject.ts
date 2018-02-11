@@ -13,9 +13,11 @@ abstract class GameObject {
     protected abstract frameHeight: number;
 
     constructor(props: IGameObjectProps) {
-       this.props = props;
-
-       this.handleSfx = this.handleSfx.bind(this);
+        this.props = props;
+        this.collideWithPlayer = this.collideWithPlayer.bind(this);
+        this.generalCollision = this.generalCollision.bind(this);
+        this.handleAnimation = this.handleAnimation.bind(this);
+        this.handleSfx = this.handleSfx.bind(this);
     }
 
     public attachLevel(level: Level): void {

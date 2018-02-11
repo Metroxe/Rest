@@ -3,13 +3,13 @@ import InputHandler = Phaser.InputHandler;
 import {Inventory} from "../../inventory";
 
 abstract class Player extends GameObject {
+    public speed: number = 128;
     private inputHandler: InputHandler;
     private w: Phaser.Key;
     private a: Phaser.Key;
     private s: Phaser.Key;
     private d: Phaser.Key;
     private cursors: Phaser.CursorKeys;
-    private speed: number = 128;
     private movementTime: number = 300;
     private nextValue: { x: number, y: number };
     private moving: boolean;
@@ -71,6 +71,32 @@ abstract class Player extends GameObject {
         } else {
             // else restart the level
             this.props.game.state.start(this.level.key);
+        }
+    }
+
+    public forceNoMove(): void {
+        this.moveOver();
+        switch (this.sprite.body.facing) {
+            case (Phaser.UP):
+                this.sprite.body.y = this.nextValue.y + this.speed;
+                this.sprite.body.x = this.nextValue.x;
+                this.sprite.body.stopMovement(0);
+                break;
+            case (Phaser.RIGHT):
+                this.sprite.body.y = this.nextValue.y;
+                this.sprite.body.x = this.nextValue.x - this.speed;
+                this.sprite.body.stopMovement(0);
+                break;
+            case (Phaser.LEFT):
+                this.sprite.body.y = this.nextValue.y;
+                this.sprite.body.x = this.nextValue.x + this.speed;
+                this.sprite.body.stopMovement(0);
+                break;
+            case (Phaser.DOWN):
+                this.sprite.body.y = this.nextValue.y - this.speed;
+                this.sprite.body.x = this.nextValue.x;
+                this.sprite.body.stopMovement(0);
+                break;
         }
     }
 
@@ -148,16 +174,6 @@ abstract class Player extends GameObject {
                     break;
             }
         }
-        //
-        // if ((this.a.isDown || this.cursors.left.isDown) && (this.d.isDown || this.cursors.right.isDown)) {
-        //     this.sprite.body.velocity.x = 0;
-        // } else if (this.a.isDown || this.cursors.left.isDown) {
-        //     this.sprite.body.velocity.x = -this.speed;
-        // } else if (this.d.isDown || this.cursors.right.isDown) {
-        //     this.sprite.body.velocity.x = this.speed;
-        // } else {
-        //     this.sprite.body.velocity.x = 0;
-        // }
     }
 }
 

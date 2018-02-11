@@ -69,12 +69,14 @@ abstract class Level extends Phaser.State {
         game.camera.follow(this.player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
     }
 
-    public getTiledJSON(game: Phaser.game): void {
+    public getTiledJSON(game: Phaser.Game): void {
         return game.cache.getJSON(this.tiledJSONKey, false);
     }
+
     public getAllDoors(): Door[] {
         return this.doors;
     }
+
     public getDoor(doorID: string): Door {
         return this.doors[doorID];
     }
