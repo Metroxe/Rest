@@ -7,6 +7,7 @@ import {DreamTwoToOne} from "../src/states/Levels/DreamTwoToOne";
 import {DreamTwoToTwo} from "../src/states/Levels/DreamTwoToTwo";
 import {DreamTwoToFour} from "../src/states/Levels/DreamTwoToFour";
 import {Introduction} from "../src/states/Levels/TextLevels/Introduction";
+import {IntroVideo} from "../src/states/Levels/introVideo";
 
 class Gamogori {
 
@@ -35,6 +36,9 @@ class Gamogori {
         // audio
         this.game.load.audio("d1_key", "assets/sfx/d1_key.wav");
 
+        // video
+        this.game.load.video('tester', 'assets/video/tester.mp4');
+
         // level maps
         this.game.load.json("maze", "tiled_maps/maze.json");
         this.game.load.json("test", "tiled_maps/test.json");
@@ -52,6 +56,7 @@ class Gamogori {
     }
 
     private create(): void {
+        this.game.state.add("introVideo", IntroVideo);
         this.game.state.add("Introduction", Introduction);
         this.game.state.add("lvl1-1", DreamOneToOne);
         this.game.state.add("lvl1-2", DreamOneToTwo);
@@ -59,7 +64,7 @@ class Gamogori {
         this.game.state.add("lvl2-1", DreamTwoToOne);
         this.game.state.add("lvl2-2", DreamTwoToTwo);
         this.game.state.add("lvl2-4", DreamTwoToFour);
-        this.game.state.start("lvl2-4");
+        this.game.state.start("introVideo");
     }
 
     private update(): void {
