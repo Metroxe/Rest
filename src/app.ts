@@ -53,7 +53,7 @@ class Gamogori {
         this.game.state.add("lvl1-2", DreamOneToTwo);
         this.game.state.add("lvl1-3", DreamOneToThree);
         this.game.state.add("lvl1-4", DreamOneToFour);
-        this.game.state.start("TestLevel");
+        this.game.state.start("Introduction");
     }
 
     private update(): void {
