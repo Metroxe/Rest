@@ -44,11 +44,13 @@
                  "name":"",
                  "properties":
                     {
-                     "enemyID":"C"
+                     "enemyID":"B",
+                     "gameObjectID":"8bit_shooter"
                     },
                  "propertytypes":
                     {
-                     "enemyID":"string"
+                     "enemyID":"string",
+                     "gameObjectID":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -76,10 +78,12 @@
                  "name":"",
                  "properties":
                     {
+                     "gameObjectID":"8bit_switch",
                      "openDoorID":"A"
                     },
                  "propertytypes":
                     {
+                     "gameObjectID":"string",
                      "openDoorID":"string"
                     },
                  "rotation":0,
@@ -96,11 +100,13 @@
                  "name":"",
                  "properties":
                     {
-                     "direction":"right"
+                     "direction":"right",
+                     "gameObjectID":"8bit_enemy2"
                     },
                  "propertytypes":
                     {
-                     "direction":"string"
+                     "direction":"string",
+                     "gameObjectID":"string"
                     },
                  "rotation":90,
                  "type":"",
@@ -116,11 +122,13 @@
                  "name":"",
                  "properties":
                     {
-                     "direction":"right"
+                     "direction":"right",
+                     "gameObjectID":"8bit_enemy2"
                     },
                  "propertytypes":
                     {
-                     "direction":"string"
+                     "direction":"string",
+                     "gameObjectID":"string"
                     },
                  "rotation":90,
                  "type":"",
@@ -136,11 +144,13 @@
                  "name":"",
                  "properties":
                     {
-                     "direction":"right"
+                     "direction":"right",
+                     "gameObjectID":"8bit_enemy2"
                     },
                  "propertytypes":
                     {
-                     "direction":"string"
+                     "direction":"string",
+                     "gameObjectID":"string"
                     },
                  "rotation":90,
                  "type":"",
@@ -156,11 +166,13 @@
                  "name":"",
                  "properties":
                     {
-                     "direction":"right"
+                     "direction":"right",
+                     "gameObjectID":"8bit_enemy2"
                     },
                  "propertytypes":
                     {
-                     "direction":"string"
+                     "direction":"string",
+                     "gameObjectID":"string"
                     },
                  "rotation":90,
                  "type":"",
@@ -176,11 +188,13 @@
                  "name":"",
                  "properties":
                     {
-                     "direction":"left"
+                     "direction":"left",
+                     "gameObjectID":"8bit_enemy2"
                     },
                  "propertytypes":
                     {
-                     "direction":"string"
+                     "direction":"string",
+                     "gameObjectID":"string"
                     },
                  "rotation":-90,
                  "type":"",
@@ -196,11 +210,13 @@
                  "name":"",
                  "properties":
                     {
-                     "direction":"left"
+                     "direction":"left",
+                     "gameObjectID":"8bit_enemy2"
                     },
                  "propertytypes":
                     {
-                     "direction":"string"
+                     "direction":"string",
+                     "gameObjectID":"string"
                     },
                  "rotation":-90,
                  "type":"",
@@ -210,37 +226,19 @@
                  "y":1536
                 }, 
                 {
-                 "gid":50,
-                 "height":128,
-                 "id":44,
-                 "name":"",
-                 "properties":
-                    {
-                     "doorID":"A"
-                    },
-                 "propertytypes":
-                    {
-                     "doorID":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":1792,
-                 "y":1152
-                }, 
-                {
                  "gid":74,
                  "height":128,
                  "id":46,
                  "name":"",
                  "properties":
                     {
-                     "enemyID":"A"
+                     "enemyID":"A",
+                     "gameObjectID":"8bit_enemy"
                     },
                  "propertytypes":
                     {
-                     "enemyID":"string"
+                     "enemyID":"string",
+                     "gameObjectID":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -250,35 +248,67 @@
                  "y":1536
                 }, 
                 {
-                 "gid":98,
-                 "height":128,
-                 "id":49,
-                 "name":"",
-                 "properties":
-                    {
-                     "enemyID":"B"
-                    },
-                 "propertytypes":
-                    {
-                     "enemyID":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":1152,
-                 "y":1152
-                }, 
-                {
                  "gid":105,
                  "height":128,
                  "id":57,
                  "name":"",
+                 "properties":
+                    {
+                     "gameObjectID":"8bit_player"
+                    },
+                 "propertytypes":
+                    {
+                     "gameObjectID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
                  "x":1536,
+                 "y":1152
+                }, 
+                {
+                 "gid":49,
+                 "height":128,
+                 "id":62,
+                 "name":"",
+                 "properties":
+                    {
+                     "gameObjectID":"8bit_door"
+                    },
+                 "propertytypes":
+                    {
+                     "gameObjectID":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":1792,
+                 "y":1152
+                }, 
+                {
+                 "gid":49,
+                 "height":128,
+                 "id":64,
+                 "name":"",
+                 "properties":
+                    {
+                     "destination":"lvl2-4",
+                     "doorID":"A",
+                     "gameObjectID":"8bit_door"
+                    },
+                 "propertytypes":
+                    {
+                     "destination":"string",
+                     "doorID":"string",
+                     "gameObjectID":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":1792,
                  "y":1152
                 }],
          "opacity":1,
@@ -287,7 +317,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":60,
+ "nextobjectid":65,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.3",

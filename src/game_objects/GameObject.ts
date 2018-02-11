@@ -84,6 +84,7 @@ interface IGameObjectProps {
     game: Phaser.Game;
     x: number;
     y: number;
+    frame?: number;
 }
 
 export {IGameObjectProps, GameObject};

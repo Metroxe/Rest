@@ -41,9 +41,9 @@ class Gamogori {
         this.game.load.json("lvl1-1", "tiled_maps/dream_1/lvl1-1.json");
         this.game.load.json("lvl1-2", "tiled_maps/dream_1/lvl1-2.json");
         this.game.load.json("lvl1-3", "tiled_maps/dream_1/lvl1-3.json");
-        this.game.load.json("lvl2-1", "tiled_maps/dream_1/lvl2-1.json");
-        this.game.load.json("lvl2-2", "tiled_maps/dream_1/lvl2-2.json");
-        this.game.load.json("lvl2-4", "tiled_maps/dream_1/lvl2-4.json");
+        this.game.load.json("lvl2-1", "tiled_maps/dream_2/lvl2_1.json");
+        this.game.load.json("lvl2-2", "tiled_maps/dream_2/lvl2_2.json");
+        this.game.load.json("lvl2-4", "tiled_maps/dream_2/lvl2_4.json");
         this.game.load.image("keyIcon", "assets/pink.png");
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         // new TestObject({x: 0, y: 0, game: this.game}).preload();
@@ -57,7 +57,7 @@ class Gamogori {
         this.game.state.add("lvl2-1", DreamTwoToOne);
         this.game.state.add("lvl2-2", DreamTwoToTwo);
         this.game.state.add("lvl2-4", DreamTwoToFour);
-        this.game.state.start("Introduction");
+        this.game.state.start("lvl2-1");
     }
 
     private update(): void {
