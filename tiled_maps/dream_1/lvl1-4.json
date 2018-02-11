@@ -75,10 +75,12 @@
                  "name":"",
                  "properties":
                     {
+                     "enemyID":"B",
                      "gameObjectID":"OneDEnemyWalker"
                     },
                  "propertytypes":
                     {
+                     "enemyID":"string",
                      "gameObjectID":"string"
                     },
                  "rotation":0,
@@ -115,10 +117,12 @@
                  "name":"",
                  "properties":
                     {
+                     "enemyID":"A",
                      "gameObjectID":"OneDEnemyWalker"
                     },
                  "propertytypes":
                     {
+                     "enemyID":"string",
                      "gameObjectID":"string"
                     },
                  "rotation":0,
@@ -127,26 +131,6 @@
                  "width":128,
                  "x":384,
                  "y":1280
-                }, 
-                {
-                 "gid":8,
-                 "height":128,
-                 "id":30,
-                 "name":"",
-                 "properties":
-                    {
-                     "gameObjectID":"OneDKey"
-                    },
-                 "propertytypes":
-                    {
-                     "gameObjectID":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":896,
-                 "y":384
                 }, 
                 {
                  "gid":9,
@@ -224,15 +208,15 @@
          "tilewidth":128
         }, 
         {
-         "columns":6,
+         "columns":7,
          "firstgid":4,
          "image":"..\/..\/assets\/characters_one_dimension.png",
          "imageheight":128,
-         "imagewidth":768,
+         "imagewidth":896,
          "margin":0,
          "name":"characters1",
          "spacing":0,
-         "tilecount":6,
+         "tilecount":7,
          "tileheight":128,
          "tileproperties":
             {

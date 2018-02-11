@@ -5,7 +5,8 @@ class OneDDoor extends Door {
     protected key: string = "OneDDoor";
     protected frameWidth: number = 128;
     protected frameHeight: number = 128;
-    protected startingFrame: number = 3;
+    protected startingFrame: number = 6;
+    protected openFrame: number = 3;
 }
 
 export {OneDDoor};
