@@ -4,7 +4,9 @@ class Inventory {
     private static instance: Inventory;
 
     private constructor() {
-        this.ref = {};
+        this.ref = {
+            lives: 3,
+        };
     }
     public static getInstance(): Inventory {
         if (!Inventory.instance) {
@@ -24,7 +26,9 @@ class Inventory {
         return this.ref[key];
     }
     public clearInventory(): void {
-        this.ref = {};
+        this.ref = {
+            lives: 3,
+        };
     }
 }
 

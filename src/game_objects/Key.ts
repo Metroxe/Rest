@@ -1,5 +1,4 @@
 import {GameObject, IGameObjectProps} from "./GameObject";
-import {Inventory} from "../inventory";
 import {Door} from "./Door";
 
 abstract class Key extends GameObject {
@@ -17,8 +16,7 @@ abstract class Key extends GameObject {
 
     public collideWithPlayer(): void {
         // add to inventory
-        const inventory: Inventory = Inventory.getInstance();
-        inventory.setItem("OneDKey", inventory.getItem("OneDKey") + 1);
+        this.level.getPlayer().addToInventory("key");
 
         this.handleSfx(this.collideAudio);
         const targetDoor: Door = this.level.getDoor(this.openDoorID);

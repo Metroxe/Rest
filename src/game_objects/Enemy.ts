@@ -5,10 +5,12 @@ abstract class Enemy extends GameObject {
 
     constructor(props: IEnemyObjectProps) {
         super(props);
+
+        this.collideWithPlayer = this.collideWithPlayer.bind(this);
     }
 
     public collideWithPlayer(): void {
-
+        this.level.getPlayer().die();
     }
 }
 
