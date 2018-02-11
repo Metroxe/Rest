@@ -1,13 +1,12 @@
 import Game = Phaser.Game;
 import IGameConfig = Phaser.IGameConfig;
-import {TestLevel} from "./states/Levels/TestLevel";
-import {DreamOneToOne} from "./states/Levels/DreamOneToOne";
-import {DreamOneToTwo} from "./states/Levels/DreamOneToTwo";
-import {DreamOneToThree} from "./states/Levels/DreamOneToThree";
-import {DreamTwoToOne} from "./states/Levels/DreamTwoToOne";
-import {DreamTwoToTwo} from "./states/Levels/DreamTwoToTwo";
-import {DreamTwoToFour} from "./states/Levels/DreamTwoToFour";
-import {Introduction} from "./states/Levels/TextLevels/Introduction";
+import {DreamOneToOne} from "../src/states/Levels/DreamOneToOne";
+import {DreamOneToTwo} from "../src/states/Levels/DreamOneToTwo";
+import {DreamOneToThree} from "../src/states/Levels/DreamOneToThree";
+import {DreamTwoToOne} from "../src/states/Levels/DreamTwoToOne";
+import {DreamTwoToTwo} from "../src/states/Levels/DreamTwoToTwo";
+import {DreamTwoToFour} from "../src/states/Levels/DreamTwoToFour";
+import {Introduction} from "../src/states/Levels/TextLevels/Introduction";
 
 class Gamogori {
 
@@ -27,7 +26,6 @@ class Gamogori {
     };
 
     private game: Game;
-    private testLevel: TestLevel = new TestLevel();
 
     constructor() {
         this.game = new Phaser.Game(this.config);
@@ -52,7 +50,6 @@ class Gamogori {
     }
 
     private create(): void {
-        this.game.state.add("TestLevel", TestLevel);
         this.game.state.add("Introduction", Introduction);
         this.game.state.add("lvl1-1", DreamOneToOne);
         this.game.state.add("lvl1-2", DreamOneToTwo);

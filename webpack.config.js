@@ -12,7 +12,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [ '.tsx', 'EightBitObjects.ts', '.js' ]
+        extensions: [ '.tsx', '.ts', '.js' ]
     },
     output: {
         filename: 'game.js',
