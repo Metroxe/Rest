@@ -164,7 +164,7 @@ abstract class Level extends Phaser.State {
                 gameObject = new OneDKey({...gameObjectProp, openDoorID: additional.openDoorID});
                 break;
             case "OneDEnemyWalker":
-                gameObject = new OneDEnemyWalker({...gameObjectProp});
+                gameObject = new OneDEnemyWalker({...gameObjectProp, xAxis: additional.xAxis, offset: additional.offset});
                 break;
             case "OneDEnemyShooter":
                 gameObject = new OneDEnemyShooter({...gameObjectProp});
