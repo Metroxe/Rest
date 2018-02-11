@@ -4,6 +4,7 @@ import {Inventory} from "../../inventory";
 import {Door} from "../Door";
 
 abstract class Player extends GameObject {
+    public speed: number = 128;
     protected door: Door;
     private inputHandler: InputHandler;
     private w: Phaser.Key;
@@ -11,7 +12,6 @@ abstract class Player extends GameObject {
     private s: Phaser.Key;
     private d: Phaser.Key;
     private cursors: Phaser.CursorKeys;
-    private speed: number = 128;
     private movementTime: number = 300;
     private nextValue: { x: number, y: number };
     private moving: boolean;
@@ -37,8 +37,8 @@ abstract class Player extends GameObject {
     }
 
     public update(): void {
-        super.update();
         this.controlHandler();
+        super.update();
     }
 
     public addToInventory(key: string): number {
@@ -85,6 +85,32 @@ abstract class Player extends GameObject {
         }
     }
 
+    public forceNoMove(): void {
+        this.moveOver();
+        switch (this.sprite.body.facing) {
+            case (Phaser.UP):
+                this.sprite.body.y = this.nextValue.y + this.speed;
+                this.sprite.body.x = this.nextValue.x;
+                this.sprite.body.stopMovement(0);
+                break;
+            case (Phaser.RIGHT):
+                this.sprite.body.y = this.nextValue.y;
+                this.sprite.body.x = this.nextValue.x - this.speed;
+                this.sprite.body.stopMovement(0);
+                break;
+            case (Phaser.LEFT):
+                this.sprite.body.y = this.nextValue.y;
+                this.sprite.body.x = this.nextValue.x + this.speed;
+                this.sprite.body.stopMovement(0);
+                break;
+            case (Phaser.DOWN):
+                this.sprite.body.y = this.nextValue.y - this.speed;
+                this.sprite.body.x = this.nextValue.x;
+                this.sprite.body.stopMovement(0);
+                break;
+        }
+    }
+
     private enableControls(): void {
         this.inputHandler = new InputHandler(this.sprite);
         this.w = this.props.game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -103,12 +129,22 @@ abstract class Player extends GameObject {
     private controlHandler(): void {
 
         const moving: boolean = this.sprite.body.isMoving;
+        const up: boolean = (this.w.isDown || this.cursors.up.isDown);
+        const right: boolean = (this.d.isDown || this.cursors.right.isDown);
+        const left: boolean = (this.a.isDown || this.cursors.left.isDown);
+        const down: boolean = (this.s.isDown || this.cursors.down.isDown);
+
+        if (up) {
+            this.sprite.body.facing = Phaser.UP;
+        } else if (right) {
+            this.sprite.body.facing = Phaser.RIGHT;
+        } else if (left) {
+            this.sprite.body.facing = Phaser.LEFT;
+        } else if (down) {
+            this.sprite.body.facing = Phaser.DOWN;
+        }
 
         if (!moving && !this.moving) {
-            const up: boolean = (this.w.isDown || this.cursors.up.isDown);
-            const right: boolean = (this.d.isDown || this.cursors.right.isDown);
-            const left: boolean = (this.a.isDown || this.cursors.left.isDown);
-            const down: boolean = (this.s.isDown || this.cursors.down.isDown);
             if (up) {
                 this.sprite.body.facing = Phaser.UP;
                 this.sprite.body.faceTop = true;
@@ -159,16 +195,6 @@ abstract class Player extends GameObject {
                     break;
             }
         }
-        //
-        // if ((this.a.isDown || this.cursors.left.isDown) && (this.d.isDown || this.cursors.right.isDown)) {
-        //     this.sprite.body.velocity.x = 0;
-        // } else if (this.a.isDown || this.cursors.left.isDown) {
-        //     this.sprite.body.velocity.x = -this.speed;
-        // } else if (this.d.isDown || this.cursors.right.isDown) {
-        //     this.sprite.body.velocity.x = this.speed;
-        // } else {
-        //     this.sprite.body.velocity.x = 0;
-        // }
     }
 }
 

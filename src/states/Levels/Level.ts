@@ -14,6 +14,7 @@ import {OneDBlock} from "../../game_objects/OneDimension/OneDBlock";
 import {OneDKey} from "../../game_objects/OneDimension/OneDKey";
 import {OneDEnemyWalker} from "../../game_objects/OneDimension/OneDEnemyWalker";
 import {OneDEnemyShooter} from "../../game_objects/OneDimension/OneDEnemyShooter";
+import {EightBitPlayer} from "../../game_objects/players/EightBitPlayer";
 
 abstract class Level extends Phaser.State {
     public abstract levelName: string;
@@ -78,9 +79,14 @@ abstract class Level extends Phaser.State {
         game.camera.follow(this.player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
     }
 
+    public getTiledJSON(game: Phaser.Game): void {
+        return game.cache.getJSON(this.tiledJSONKey, false);
+    }
+
     public getAllDoors(): Door[] {
         return this.doors;
     }
+
     public getDoor(doorID: string): Door {
         return this.doors[doorID];
     }
@@ -162,6 +168,9 @@ abstract class Level extends Phaser.State {
                 break;
             case "OneDEnemyShooter":
                 gameObject = new OneDEnemyShooter({...gameObjectProp});
+                break;
+            case "eightBitPlayer":
+                gameObject = new EightBitPlayer({...gameObjectProp});
                 break;
         }
 
