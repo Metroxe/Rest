@@ -20,6 +20,10 @@ class TextBox {
         this.nextLine();
     }
 
+    public addEnter(): void {
+        this.enter = this.game.input.keyboard.addKey(Phaser.Phaser.Keyboard.ENTER);
+    }
+
     private nextLine(): void {
         if (this.lineIndex === this.content.length) {
             return;
@@ -55,6 +59,7 @@ class TextBox {
             this.game.time.events.add(this.lineDelay, this.nextLine, this);
         }
     }
+
 
 }
 
