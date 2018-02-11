@@ -2,6 +2,7 @@ import {GameObject, IGameObjectProps} from "../GameObject";
 import InputHandler = Phaser.InputHandler;
 import {Inventory} from "../../inventory";
 import {Door} from "../Door";
+import Sound = Phaser.Sound;
 
 abstract class Player extends GameObject {
     public speed: number = 128;
@@ -70,6 +71,7 @@ abstract class Player extends GameObject {
 
         // play animation
         // TODO
+        this.handleSfx("hurt");
 
         if (livesLeft === 0) {
             // end the game if the player has lost all their lives

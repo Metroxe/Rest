@@ -26,6 +26,7 @@ import {EightBitKey} from "../../game_objects/EightBit/EightBitKey";
 import {EightBitSwitch} from "../../game_objects/EightBit/EightBitSwitch";
 import {EightBitShooter} from "../../game_objects/EightBit/EightBitShooter";
 import {EightBitEnemyWalker} from "../../game_objects/EightBit/EightBitEnemyWalker";
+import Sound = Phaser.Sound;
 
 abstract class Level extends Phaser.State {
     public abstract levelName: string;
@@ -184,9 +185,11 @@ abstract class Level extends Phaser.State {
         let gameObject: GameObject;
 
         let frame: number = null;
-        if (additional.frame) {
-            frame = additional.frame;
-            delete additional.frame;
+        if (additional) {
+            if (additional.frame) {
+                frame = additional.frame;
+                delete additional.frame;
+            }
         }
 
         const gameObjectProp: IGameObjectProps = {
