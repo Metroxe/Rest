@@ -11,6 +11,7 @@ abstract class Player extends GameObject {
     private a: Phaser.Key;
     private s: Phaser.Key;
     private d: Phaser.Key;
+    private space: Phaser.Key;
     private cursors: Phaser.CursorKeys;
     private movementTime: number = 300;
     private nextValue: { x: number, y: number };
@@ -32,8 +33,6 @@ abstract class Player extends GameObject {
         this.sprite.body.acceleration = 0;
         this.sprite.body.drag = 0;
         this.sprite.body.friction = 0;
-        console.log("PLAYER THIS: ", this);
-        this.door = new Door({player: this});
     }
 
     public update(): void {
@@ -76,9 +75,7 @@ abstract class Player extends GameObject {
         if (livesLeft === 0) {
             // end the game if the player has lost all their lives
             // send back to title screen
-            // TODO
-
-            alert("game over");
+            this.props.game.state.start("DreamOneOneText");
         } else {
             // else restart the level
             this.props.game.state.start(this.level.key);
@@ -117,6 +114,7 @@ abstract class Player extends GameObject {
         this.a = this.props.game.input.keyboard.addKey(Phaser.Keyboard.A);
         this.s = this.props.game.input.keyboard.addKey(Phaser.Keyboard.S);
         this.d = this.props.game.input.keyboard.addKey(Phaser.Keyboard.D);
+        this.space = this.props.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.cursors = this.props.game.input.keyboard.createCursorKeys();
     }
 
@@ -127,6 +125,10 @@ abstract class Player extends GameObject {
     }
 
     private controlHandler(): void {
+
+        if (this.space.isDown) {
+            this.props.game.state.restart();
+        }
 
         const moving: boolean = this.sprite.body.isMoving;
         const up: boolean = (this.w.isDown || this.cursors.up.isDown);

@@ -2,7 +2,6 @@ import {GameObject, IGameObjectProps} from "./GameObject";
 import {Door} from "./Door";
 
 abstract class Key extends GameObject {
-    protected destinationState: string;
     protected openDoorID: string;
 
     protected collideAudio: string;
@@ -10,6 +9,7 @@ abstract class Key extends GameObject {
     constructor(props: IKeyObjectProps) {
         super(props);
         this.openDoorID = props.openDoorID;
+        console.log("open doorID: " + this.openDoorID);
 
         this.collideWithPlayer = this.collideWithPlayer.bind(this);
     }
@@ -22,7 +22,7 @@ abstract class Key extends GameObject {
         const targetDoor: Door = this.level.getDoor(this.openDoorID);
         targetDoor.unlock();
 
-        this.sprite.destroy();
+        this.sprite.x = -9999;
     }
 }
 

@@ -15,19 +15,32 @@ import {OneDKey} from "../../game_objects/OneDimension/OneDKey";
 import {OneDEnemyWalker} from "../../game_objects/OneDimension/OneDEnemyWalker";
 import {OneDEnemyShooter} from "../../game_objects/OneDimension/OneDEnemyShooter";
 import {EightBitPlayer} from "../../game_objects/players/EightBitPlayer";
+import {EightBitBrick} from "../../game_objects/EightBit/EightBitBrick";
+import {EightBitGrass} from "../../game_objects/EightBit/EightBitGrass";
+import {EightBitBush} from "../../game_objects/EightBit/EightBitBush";
+import {EightBitGround} from "../../game_objects/EightBit/EightBitGround";
+import {EightBitWell} from "../../game_objects/EightBit/EightBitWell";
+import {EightBitStump} from "../../game_objects/EightBit/EightBitStump";
+import {EightBitDoor} from "../../game_objects/EightBit/EightBitDoor";
+import {EightBitKey} from "../../game_objects/EightBit/EightBitKey";
+import {EightBitSwitch} from "../../game_objects/EightBit/EightBitSwitch";
+import {EightBitShooter} from "../../game_objects/EightBit/EightBitShooter";
+import {EightBitEnemyWalker} from "../../game_objects/EightBit/EightBitEnemyWalker";
 
 abstract class Level extends Phaser.State {
     public abstract levelName: string;
-    protected gameObjectArray: GameObject[];
+    public gameObjectArray: GameObject[];
     protected abstract tiledJSONKey: string;
     protected player: Player;
     protected doors: Door[];
+    protected switchDoors: Door[];
     protected userInterface: UserInterface;
 
     public init(...args): void {
         super.init(args);
         this.gameObjectArray = [];
         this.doors = [];
+        this.switchDoors = [];
     }
 
     public create(game: Phaser.Game): void {
@@ -67,6 +80,14 @@ abstract class Level extends Phaser.State {
         return this.gameObjectArray;
     }
 
+    public addToObjectArray(gameObject: GameObject): void {
+        this.gameObjectArray.push(gameObject);
+    }
+
+    public removeObjectFromArray(gameObject: GameObject): void {
+        this.gameObjectArray.splice(this.gameObjectArray.indexOf(gameObject, 1));
+    }
+
     public setPlayer(player: Player): void {
         this.player = player;
     }
@@ -91,12 +112,20 @@ abstract class Level extends Phaser.State {
         return this.doors[doorID];
     }
 
-    protected renderMap(game: Phaser.Game): void {
-        const json: any = game.cache.getJSON(this.tiledJSONKey, false);
-        this.renderLayers(json, game);
+    public getAllSwitchDoors(): Door[] {
+        return this.switchDoors;
     }
 
-    private renderLayers(json: any, game: Phaser.Game): void {
+    public getSwitchDoor(doorID: string): Door {
+        return this.switchDoors[doorID];
+    }
+
+    protected renderMap(game: Phaser.Game): void {
+        const json: any = game.cache.getJSON(this.tiledJSONKey, false);
+        this.renderLayers(json, game, /^lvl2.+$/.test(this.tiledJSONKey));
+    }
+
+    private renderLayers(json: any, game: Phaser.Game, dreamTwo: boolean = false): void {
         const ref: any = {};
 
         game.world.resize(json.width * json.tilewidth, json.height * json.tileheight);
@@ -104,8 +133,18 @@ abstract class Level extends Phaser.State {
         json.tilesets.forEach((tileset: any): void => {
             Object.keys(tileset.tileproperties).forEach((key: string): void => {
                 const num: number = parseInt(key);
+                console.log("num: " + num);
                 const regKey: string = (num + tileset.firstgid).toString();
-                ref[regKey] = tileset.tileproperties[key].gameObjectID;
+                console.log("gid: " + tileset.firstgid);
+                if (dreamTwo === true) {
+                    ref[regKey] = {
+                        key: tileset.tileproperties[key].gameObjectID,
+                        frame: num,
+                        gid: tileset.firstgid,
+                    };
+                } else {
+                    ref[regKey] = tileset.tileproperties[key].gameObjectID;
+                }
             });
         });
 
@@ -116,12 +155,25 @@ abstract class Level extends Phaser.State {
                     // const y: number = Math.floor(i / (layer.width - 1)) * json.tileheight;
                     const y: number = Math.floor((i / layer.width)) * json.tileheight;
                     const x: number = (i % layer.width) * json.tilewidth;
-                    this.renderGameObject(ref[keyRef], x, y, game);
+                    if (dreamTwo === true) {
+                        this.renderGameObjectWithFrame(ref[keyRef], x, y, game);
+                    } else {
+                        this.renderGameObject(ref[keyRef], x, y, game);
+                    }
                 });
             } else {
                 layer.objects.forEach((obj: any): void => {
-                    this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y - json.tileheight, game, obj.properties);
-                    console.log(obj.properties);
+                    if (dreamTwo === true) {
+                        if (!obj.properties) {
+                            return;
+                        }
+                        this.renderGameObjectWithFrame({
+                            key: obj.properties.gameObjectID,
+                            frame: obj.properties.gid,
+                        }, obj.x, obj.y - json.tileheight, game, obj.properties);
+                    } else {
+                        this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y - json.tileheight, game, obj.properties);
+                    }
                 });
             }
         });
@@ -130,10 +182,19 @@ abstract class Level extends Phaser.State {
     private renderGameObject(keyRef: string, x: number, y: number, game: Phaser.Game, additional?: any): void {
         let gameObject: GameObject;
 
+        let frame: number = null;
+        if (additional) {
+            if (additional.frame) {
+                frame = additional.frame;
+                delete additional.frame;
+            }
+        }
+
         const gameObjectProp: IGameObjectProps = {
             game,
             x,
             y,
+            frame,
         };
 
         switch (keyRef) {
@@ -164,19 +225,68 @@ abstract class Level extends Phaser.State {
                 gameObject = new OneDKey({...gameObjectProp, openDoorID: additional.openDoorID});
                 break;
             case "OneDEnemyWalker":
-                gameObject = new OneDEnemyWalker({...gameObjectProp});
+                gameObject = new OneDEnemyWalker({...gameObjectProp, xAxis: additional.xAxis, offset: additional.offset});
                 break;
             case "OneDEnemyShooter":
                 gameObject = new OneDEnemyShooter({...gameObjectProp});
                 break;
-            case "eightBitPlayer":
+            case "8bit_player":
                 gameObject = new EightBitPlayer({...gameObjectProp});
                 break;
+            case "8bit_brick":
+                gameObject = new EightBitBrick({...gameObjectProp});
+                break;
+            case "8bit_grass":
+                gameObject = new EightBitGrass({...gameObjectProp});
+                break;
+            case "8bit_bush":
+                gameObject = new EightBitBush({...gameObjectProp});
+                break;
+            case "8bit_ground":
+                gameObject = new EightBitGround({...gameObjectProp});
+                break;
+            case "8bit_well":
+                gameObject = new EightBitWell({...gameObjectProp});
+                break;
+            case "8bit_stump":
+                gameObject = new EightBitStump({...gameObjectProp});
+                break;
+            case "8bit_door":
+                const eightBitDoorTemp: Door = new EightBitDoor({...gameObjectProp, doorID: additional.doorID, switchDoorID: additional.switchDoorID, destination: additional.destination});
+                this.doors[additional.doorID] = eightBitDoorTemp;
+                this.switchDoors[additional.switchDoorID] = eightBitDoorTemp;
+                gameObject = eightBitDoorTemp;
+                break;
+            case "8bit_key":
+                gameObject = new EightBitKey({...gameObjectProp, openDoorID: additional.openDoorID});
+                break;
+            case "8bit_switch":
+                gameObject = new EightBitSwitch({...gameObjectProp, openDoorID: additional.openDoorID, openSwitchDoorID: additional.openSwitchDoorID, selfReset: additional.selfReset});
+                break;
+            case "8bit_shooter":
+                gameObject = new EightBitShooter({...gameObjectProp});
+                break;
+            case "8bit_enemy":
+                gameObject = new EightBitEnemyWalker({...gameObjectProp, xAxis: additional.xAxis, offset: additional.offset});
+                break;
+
         }
 
         if (gameObject) {
             this.gameObjectArray.push(gameObject);
         }
+    }
+
+    private renderGameObjectWithFrame(keyRef: any, x: number, y: number, game: Phaser.Game, additional?: any): void {
+        if (!keyRef) {
+            return;
+        }
+        const key: string = keyRef.key;
+        const frame: number = keyRef.frame;
+        additional = additional || {};
+        additional.frame = frame;
+
+        this.renderGameObject(key, x, y, game, additional);
     }
 }
 

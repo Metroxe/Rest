@@ -17,6 +17,7 @@ class OneDimensionWallOrange extends GameObject {
 }
 
 class OneDimensionGround extends GameObject {
+    public collidable: boolean = false;
     protected filePath: string = "assets/background_one_dimension.png";
     protected key: string = "OneDGround";
     protected frameWidth: number = 128;
