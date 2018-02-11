@@ -73,6 +73,7 @@ abstract class GameObject {
 
     protected handleSfx(key: string): void {
         const sfx: any = this.props.game.add.audio(key);
+        sfx.volume = 0.1;
         sfx.play();
     }
 
