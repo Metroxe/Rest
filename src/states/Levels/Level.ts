@@ -18,7 +18,7 @@ import {EightBitPlayer} from "../../game_objects/players/EightBitPlayer";
 
 abstract class Level extends Phaser.State {
     public abstract levelName: string;
-    protected gameObjectArray: GameObject[];
+    public gameObjectArray: GameObject[];
     protected abstract tiledJSONKey: string;
     protected player: Player;
     protected doors: Door[];
