@@ -66,6 +66,14 @@
                  "height":128,
                  "id":5,
                  "name":"",
+                 "properties":
+                    {
+                     "enemyID":"B"
+                    },
+                 "propertytypes":
+                    {
+                     "enemyID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -78,6 +86,14 @@
                  "height":128,
                  "id":8,
                  "name":"",
+                 "properties":
+                    {
+                     "enemyID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "enemyID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -102,6 +118,14 @@
                  "height":128,
                  "id":13,
                  "name":"",
+                 "properties":
+                    {
+                     "enemyID":"C"
+                    },
+                 "propertytypes":
+                    {
+                     "enemyID":"string"
+                    },
                  "rotation":-90,
                  "type":"",
                  "visible":true,
@@ -114,6 +138,14 @@
                  "height":128,
                  "id":16,
                  "name":"",
+                 "properties":
+                    {
+                     "direction":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "direction":"string"
+                    },
                  "rotation":-90,
                  "type":"",
                  "visible":true,
@@ -126,6 +158,14 @@
                  "height":128,
                  "id":17,
                  "name":"",
+                 "properties":
+                    {
+                     "doorID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "doorID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -138,6 +178,14 @@
                  "height":128,
                  "id":18,
                  "name":"",
+                 "properties":
+                    {
+                     "openDoorID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "openDoorID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,

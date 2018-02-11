@@ -66,6 +66,14 @@
                  "height":128,
                  "id":73,
                  "name":"",
+                 "properties":
+                    {
+                     "openSwitchDoorID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "openSwitchDoorID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -78,6 +86,14 @@
                  "height":128,
                  "id":74,
                  "name":"",
+                 "properties":
+                    {
+                     "openDoorID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "openDoorID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -86,22 +102,18 @@
                  "y":640
                 }, 
                 {
-                 "gid":49,
-                 "height":128,
-                 "id":75,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":1408,
-                 "y":640
-                }, 
-                {
                  "gid":63,
                  "height":128,
                  "id":76,
                  "name":"",
+                 "properties":
+                    {
+                     "enemyID":"D"
+                    },
+                 "propertytypes":
+                    {
+                     "enemyID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -122,22 +134,18 @@
                  "y":1536
                 }, 
                 {
-                 "gid":49,
-                 "height":128,
-                 "id":80,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":1920,
-                 "y":1920
-                }, 
-                {
                  "gid":50,
                  "height":128,
                  "id":81,
                  "name":"",
+                 "properties":
+                    {
+                     "doorID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "doorID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -198,6 +206,14 @@
                  "height":128,
                  "id":86,
                  "name":"",
+                 "properties":
+                    {
+                     "enemyID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "enemyID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -210,6 +226,14 @@
                  "height":128,
                  "id":87,
                  "name":"",
+                 "properties":
+                    {
+                     "enemyID":"C"
+                    },
+                 "propertytypes":
+                    {
+                     "enemyID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -222,12 +246,40 @@
                  "height":128,
                  "id":88,
                  "name":"",
+                 "properties":
+                    {
+                     "enemyID":"B"
+                    },
+                 "propertytypes":
+                    {
+                     "enemyID":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
                  "x":1152,
                  "y":1536
+                }, 
+                {
+                 "gid":50,
+                 "height":128,
+                 "id":107,
+                 "name":"",
+                 "properties":
+                    {
+                     "switchDoorID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "switchDoorID":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":1408,
+                 "y":640
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -235,7 +287,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":107,
+ "nextobjectid":108,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.3",
