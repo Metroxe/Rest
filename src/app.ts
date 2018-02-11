@@ -6,7 +6,11 @@ import {DreamOneToThree} from "../src/states/Levels/DreamOneToThree";
 import {DreamTwoToOne} from "../src/states/Levels/DreamTwoToOne";
 import {DreamTwoToTwo} from "../src/states/Levels/DreamTwoToTwo";
 import {DreamTwoToFour} from "../src/states/Levels/DreamTwoToFour";
-import {Introduction} from "../src/states/Levels/TextLevels/Introduction";
+import {
+    DreamCliffHangerText,
+    DreamOneOneText, DreamOneThreeText, DreamOneTwoText, DreamTwoFourText,
+    DreamTwoOneText, DreamTwoTwoText,
+} from "../src/states/Levels/TextLevels/Introduction";
 import {IntroVideo} from "../src/states/Levels/introVideo";
 
 class Gamogori {
@@ -35,6 +39,10 @@ class Gamogori {
     private preload(): void {
         // audio
         this.game.load.audio("d1_key", "assets/sfx/d1_key.wav");
+        this.game.load.audio("switch", "assets/sfx/switch.wav");
+        this.game.load.audio("hurt", "assets/sfx/hurt.wav");
+        /*this.game.load.audio("dream1", "assets/music/dream1.mp3");
+        this.game.load.audio("dream2", "assets/music/dream2.mp3");*/
 
         // video
         this.game.load.video('tester', 'assets/video/tester.mp4');
@@ -57,14 +65,20 @@ class Gamogori {
 
     private create(): void {
         this.game.state.add("introVideo", IntroVideo);
-        this.game.state.add("Introduction", Introduction);
         this.game.state.add("lvl1-1", DreamOneToOne);
+        this.game.state.add("lvl1-1t", DreamOneOneText);
         this.game.state.add("lvl1-2", DreamOneToTwo);
+        this.game.state.add("lvl1-2t", DreamOneTwoText);
         this.game.state.add("lvl1-3", DreamOneToThree);
+        this.game.state.add("lvl1-3t", DreamOneThreeText);
         this.game.state.add("lvl2-1", DreamTwoToOne);
+        this.game.state.add("lvl2-1t", DreamTwoOneText);
         this.game.state.add("lvl2-2", DreamTwoToTwo);
+        this.game.state.add("lvl2-2t", DreamTwoTwoText);
         this.game.state.add("lvl2-4", DreamTwoToFour);
-        this.game.state.start("introVideo");
+        this.game.state.add("lvl2-4t", DreamTwoFourText);
+        this.game.state.add("ending", DreamCliffHangerText);
+        this.game.state.start("lvl1-1t");
     }
 
     private update(): void {

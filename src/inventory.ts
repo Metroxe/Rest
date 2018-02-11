@@ -5,7 +5,7 @@ class Inventory {
 
     private constructor() {
         this.ref = {
-            lives: 3,
+            lives: 50,
         };
     }
     public static getInstance(): Inventory {

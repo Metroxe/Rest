@@ -8,6 +8,7 @@ class EightBitSwitch extends Switch {
     protected frameHeight: number = 128;
     protected startingFrame: number = 57;
     protected pressedFrame: number = 58;
+    protected collideAudio: string = "switch";
 }
 
 export {EightBitSwitch};
