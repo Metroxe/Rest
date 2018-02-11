@@ -16,6 +16,7 @@ import {OneDEnemyWalker} from "../../game_objects/OneDimension/OneDEnemyWalker";
 import {OneDEnemyShooter} from "../../game_objects/OneDimension/OneDEnemyShooter";
 
 abstract class Level extends Phaser.State {
+    public abstract levelName: string;
     protected gameObjectArray: GameObject[];
     protected abstract tiledJSONKey: string;
     protected player: Player;
@@ -39,8 +40,10 @@ abstract class Level extends Phaser.State {
             this.followPlayer(game);
         }
 
-        this.userInterface = new UserInterface({game});
+        this.userInterface = new UserInterface({game, player: this.getPlayer(), level: this});
         this.userInterface.create();
+
+        console.log("the level name is: ", this.levelName);
     }
 
     public preload(game: Phaser.Game): void {
@@ -75,9 +78,6 @@ abstract class Level extends Phaser.State {
         game.camera.follow(this.player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
     }
 
-    public getTiledJSON(game: Phaser.game): void {
-        return game.cache.getJSON(this.tiledJSONKey, false);
-    }
     public getAllDoors(): Door[] {
         return this.doors;
     }
