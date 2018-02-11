@@ -23,6 +23,7 @@ import {EightBitWell} from "../../game_objects/EightBit/EightBitWell";
 import {EightBitStump} from "../../game_objects/EightBit/EightBitStump";
 import {EightBitDoor} from "../../game_objects/EightBit/EightBitDoor";
 import {EightBitKey} from "../../game_objects/EightBit/EightBitKey";
+import {EightBitSwitch} from "../../game_objects/EightBit/EightBitSwitch";
 
 abstract class Level extends Phaser.State {
     public abstract levelName: string;
@@ -233,7 +234,10 @@ abstract class Level extends Phaser.State {
                 gameObject = new EightBitDoor({...gameObjectProp, doorID: additional.doorID, destination: additional.destination});
                 break;
             case "8bit_key":
-                gameObject = new EightBitKey({...gameObjectProps, openDoorID: additional.openDoorID});
+                gameObject = new EightBitKey({...gameObjectProp, openDoorID: additional.openDoorID});
+                break;
+            case "8bit_switch":
+                gameObject = new EightBitSwitch({...gameObjectProp, openDoorID: additional.openDoorID, openSwitchDoorID: additional.openSwitchDoorID, selfReset: additional.selfReset});
                 break;
 
         }

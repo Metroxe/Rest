@@ -248,28 +248,6 @@
                  "y":1536
                 }, 
                 {
-                 "gid":50,
-                 "height":128,
-                 "id":108,
-                 "name":"",
-                 "properties":
-                    {
-                     "gameObjectID":"8bit_switch",
-                     "openSwitchDoorID":"A"
-                    },
-                 "propertytypes":
-                    {
-                     "gameObjectID":"string",
-                     "openSwitchDoorID":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":896,
-                 "y":640
-                }, 
-                {
                  "gid":49,
                  "height":128,
                  "id":109,
@@ -312,6 +290,28 @@
                  "width":128,
                  "x":2048,
                  "y":1920
+                }, 
+                {
+                 "gid":58,
+                 "height":128,
+                 "id":112,
+                 "name":"",
+                 "properties":
+                    {
+                     "gameObjectID":"8bit_switch",
+                     "openSwitchDoorID":"A"
+                    },
+                 "propertytypes":
+                    {
+                     "gameObjectID":"string",
+                     "openSwitchDoorID":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":896,
+                 "y":640
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -319,7 +319,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":112,
+ "nextobjectid":113,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.3",
@@ -328,7 +328,7 @@
         {
          "columns":4,
          "firstgid":1,
-         "image":"..\/8bit_Inanimate_elements.png",
+         "image":"..\/8bit_Inanimate_elements_new.png",
          "imageheight":1920,
          "imagewidth":512,
          "margin":0,

@@ -72,28 +72,6 @@
                  "y":896
                 }, 
                 {
-                 "gid":49,
-                 "height":128,
-                 "id":35,
-                 "name":"",
-                 "properties":
-                    {
-                     "gameObjectID":"8bit_switch",
-                     "openDoorID":"A"
-                    },
-                 "propertytypes":
-                    {
-                     "gameObjectID":"string",
-                     "openDoorID":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":1152,
-                 "y":896
-                }, 
-                {
                  "gid":102,
                  "height":128,
                  "id":38,
@@ -310,6 +288,30 @@
                  "width":128,
                  "x":1792,
                  "y":1152
+                }, 
+                {
+                 "gid":58,
+                 "height":128,
+                 "id":65,
+                 "name":"",
+                 "properties":
+                    {
+                     "gameObjectID":"8bit_switch",
+                     "openDoorID":"A",
+                     "selfReset":true
+                    },
+                 "propertytypes":
+                    {
+                     "gameObjectID":"string",
+                     "openDoorID":"string",
+                     "selfReset":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":1152,
+                 "y":896
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -317,7 +319,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":65,
+ "nextobjectid":66,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.3",
@@ -326,7 +328,7 @@
         {
          "columns":4,
          "firstgid":1,
-         "image":"..\/8bit_Inanimate_elements.png",
+         "image":"..\/8bit_Inanimate_elements_new.png",
          "imageheight":1920,
          "imagewidth":512,
          "margin":0,
