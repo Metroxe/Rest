@@ -1,5 +1,6 @@
 import {GameObject, IGameObjectProps} from "../GameObject";
 import InputHandler = Phaser.InputHandler;
+import {Inventory} from "../../inventory";
 
 abstract class Player extends GameObject {
     private inputHandler: InputHandler;
@@ -34,6 +35,43 @@ abstract class Player extends GameObject {
     public update(): void {
         super.update();
         this.controlHandler();
+    }
+
+    public addToInventory(key: string): number {
+        const inventory: Inventory = Inventory.getInstance();
+        const newCount: number = inventory.getItem(key) + 1;
+        inventory.setItem(key, newCount);
+        return newCount;
+    }
+
+    // returns always the calculated value afterwards but the actual amount in the inventory is always zero or greater
+    public removeFromInventory(key: string): number {
+        const inventory: Inventory = Inventory.getInstance();
+        const newCount: number = inventory.getItem(key) - 1;
+        let newSetCount: number = newCount;
+        if (newCount < 1) {
+            newSetCount = 0;
+        }
+        inventory.setItem(key, newSetCount);
+        return newCount;
+    }
+
+    public die(): void {
+        const livesLeft: number = this.removeFromInventory("lives");
+
+        // play animation
+        // TODO
+
+        if (livesLeft === 0) {
+            // end the game if the player has lost all their lives
+            // send back to title screen
+            // TODO
+
+            alert("game over");
+        } else {
+            // else restart the level
+            this.props.game.state.start(this.level.key);
+        }
     }
 
     private enableControls(): void {

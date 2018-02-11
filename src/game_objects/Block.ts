@@ -5,7 +5,6 @@ abstract class Block extends GameObject {
 
     constructor(props: IBlockObjectProps) {
         super(props);
-        this.destinationState = props.destination;
     }
 
     public collideWithPlayer(): void {
@@ -14,7 +13,6 @@ abstract class Block extends GameObject {
 }
 
 interface IBlockObjectProps extends IGameObjectProps {
-    destination: string;
 }
 
 export {IBlockObjectProps, Block};
