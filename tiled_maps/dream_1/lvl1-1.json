@@ -1,5 +1,4 @@
 { "height":14,
- "infinite":false,
  "layers":[
         {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -59,11 +58,13 @@
                  "properties":
                     {
                      "destination":"lvl1-2",
+                     "doorID":"A",
                      "gameObjectID":"OneDDoor"
                     },
                  "propertytypes":
                     {
                      "destination":"string",
+                     "doorID":"string",
                      "gameObjectID":"string"
                     },
                  "rotation":0,
@@ -80,11 +81,13 @@
                  "name":"",
                  "properties":
                     {
-                     "gameObjectID":"OneDKey"
+                     "gameObjectID":"OneDKey",
+                     "openDoorID":"A"
                     },
                  "propertytypes":
                     {
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "openDoorID":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -122,7 +125,7 @@
  "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.1.2",
+ "tiledversion":"1.0.3",
  "tileheight":128,
  "tilesets":[
         {

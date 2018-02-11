@@ -11,7 +11,7 @@ abstract class Shooter extends Enemy {
 
     public static inRange(v0: number, v1: number): boolean {
         // console.log(Math.abs(v0), Math.abs(v1), Math.abs(v0) - Math.abs(v1), Math.abs(v0) - Math.abs(v1) < 128);
-        return (Math.abs(v0 - v1) < 128);
+        return (Math.abs(v0 - v1) < 64);
     }
 
     public create(): void {
@@ -60,7 +60,7 @@ abstract class Shooter extends Enemy {
                 const that: Shooter = this;
                 setTimeout(() => {
                     that.coolDown = false;
-                }, 3000);
+                }, 1500);
                 this.createBullet(props);
             }
         }
@@ -81,7 +81,7 @@ class Bullet extends GameObject {
     protected frameWidth: number = 128;
     protected frameHeight: number = 128;
     protected direction: number;
-    protected speed: number = 128 / 12;
+    protected speed: number = 128 / 3;
     private shooter: Shooter;
     private dead: boolean = false;
 
