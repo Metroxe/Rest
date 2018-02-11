@@ -54,11 +54,13 @@
                  "properties":
                     {
                      "destination":"lvl1-3",
+                     "doorID":"A",
                      "gameObjectID":"OneDDoor"
                     },
                  "propertytypes":
                     {
                      "destination":"string",
+                     "doorID":"string",
                      "gameObjectID":"string"
                     },
                  "rotation":0,
@@ -95,10 +97,12 @@
                  "name":"",
                  "properties":
                     {
+                     "enemyID":"A",
                      "gameObjectID":"OneDEnemyWalker"
                     },
                  "propertytypes":
                     {
+                     "enemyID":"string",
                      "gameObjectID":"string"
                     },
                  "rotation":0,
@@ -115,11 +119,13 @@
                  "name":"",
                  "properties":
                     {
-                     "gameObjectID":"OneDKey"
+                     "gameObjectID":"OneDKey",
+                     "openDoorID":"A"
                     },
                  "propertytypes":
                     {
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "openDoorID":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -135,10 +141,12 @@
                  "name":"",
                  "properties":
                     {
+                     "enemyID":"B",
                      "gameObjectID":"OneDEnemyWalker"
                     },
                  "propertytypes":
                     {
+                     "enemyID":"string",
                      "gameObjectID":"string"
                     },
                  "rotation":0,
@@ -204,15 +212,15 @@
          "tilewidth":128
         }, 
         {
-         "columns":6,
+         "columns":7,
          "firstgid":4,
          "image":"..\/..\/assets\/characters_one_dimension.png",
          "imageheight":128,
-         "imagewidth":768,
+         "imagewidth":896,
          "margin":0,
          "name":"characters1",
          "spacing":0,
-         "tilecount":6,
+         "tilecount":7,
          "tileheight":128,
          "tileproperties":
             {

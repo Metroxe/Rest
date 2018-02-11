@@ -1,7 +1,10 @@
 import {GameObject, IGameObjectProps} from "../GameObject";
 import InputHandler = Phaser.InputHandler;
+import {Inventory} from "../../inventory";
+import {Door} from "../Door";
 
 abstract class Player extends GameObject {
+    protected door: Door;
     private inputHandler: InputHandler;
     private w: Phaser.Key;
     private a: Phaser.Key;
@@ -29,11 +32,57 @@ abstract class Player extends GameObject {
         this.sprite.body.acceleration = 0;
         this.sprite.body.drag = 0;
         this.sprite.body.friction = 0;
+        console.log("PLAYER THIS: ", this);
+        this.door = new Door({player: this});
     }
 
     public update(): void {
         super.update();
         this.controlHandler();
+    }
+
+    public addToInventory(key: string): number {
+        const inventory: Inventory = Inventory.getInstance();
+        const newCount: number = inventory.getItem(key) + 1;
+        inventory.setItem(key, newCount);
+        return newCount;
+    }
+
+    // returns always the calculated value afterwards but the actual amount in the inventory is always zero or greater
+    public removeFromInventory(key: string): number {
+        const inventory: Inventory = Inventory.getInstance();
+        const newCount: number = inventory.getItem(key) - 1;
+        let newSetCount: number = newCount;
+        if (newCount < 1) {
+            newSetCount = 0;
+        }
+        inventory.setItem(key, newSetCount);
+        return newCount;
+    }
+
+    public viewInventory(key: string): number {
+        const inventory: Inventory = Inventory.getInstance();
+        const newCount: number = inventory.getItem(key);
+        return newCount;
+    }
+
+    public die(): void {
+        this.removeFromInventory("keys");
+        const livesLeft: number = this.removeFromInventory("lives");
+
+        // play animation
+        // TODO
+
+        if (livesLeft === 0) {
+            // end the game if the player has lost all their lives
+            // send back to title screen
+            // TODO
+
+            alert("game over");
+        } else {
+            // else restart the level
+            this.props.game.state.start(this.level.key);
+        }
     }
 
     private enableControls(): void {
