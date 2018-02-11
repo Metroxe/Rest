@@ -4,7 +4,6 @@ abstract class Door extends GameObject {
     protected destinationState: string;
     protected doorID: string;
     protected openFrame: number;
-
     protected isLocked: boolean = true;
 
     constructor(props: IDoorObjectProps) {
@@ -18,6 +17,7 @@ abstract class Door extends GameObject {
 
     public collideWithPlayer(): void {
         if (!this.isLocked) {
+            this.level.getPlayer().removeFromInventory("keys");
             this.props.game.state.start(this.destinationState);
         }
     }

@@ -16,7 +16,7 @@ abstract class Key extends GameObject {
 
     public collideWithPlayer(): void {
         // add to inventory
-        this.level.getPlayer().addToInventory("key");
+        this.level.getPlayer().addToInventory("keys");
 
         this.handleSfx(this.collideAudio);
         const targetDoor: Door = this.level.getDoor(this.openDoorID);
