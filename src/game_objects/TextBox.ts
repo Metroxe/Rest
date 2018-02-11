@@ -7,13 +7,14 @@ class TextBox {
     private letterDelay: number = 25;
     private lineDelay: number = 800;
     private line: string[] = [];
+    private callback: () => void;
 
     constructor(props: ITextBox) {
         this.content = props.content;
         this.game = props.game;
     }
 
-    public start(): void {
+    public start(callback: () => void): void {
         this.text = this.game.add.text(32, 32, "", { font: "15px Arial", fill: "#19de65", wordWrap: true, wordWrapWidth: 450});
         this.text.z = 9999;
         this.text.setTextBounds(16, 16, 450, 568);
@@ -22,7 +23,7 @@ class TextBox {
 
     private nextLine(): void {
         if (this.lineIndex === this.content.length) {
-            return;
+            return this.callback();
         }
 
         //  Split the current line on letter, so one letter per array element

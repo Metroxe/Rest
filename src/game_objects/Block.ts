@@ -50,12 +50,8 @@ abstract class Block extends GameObject {
                     break;
                 case Phaser.DOWN:
                     if (this.sprite.body.y <= this.nextValue.y) {
-                        //this.props.game.add.tween(this.sprite).to( { x: this.nextValue.x }, 300, "Quart.easeOut");
-                        //this.props.game.add.tween(this.sprite).to( { y: this.nextValue.y }, 300, "Quart.easeOut");
-                        //
                          this.sprite.body.y = this.nextValue.y;
                          this.sprite.body.x = this.nextValue.x;
-                        //this.sprite.body.stopMovement(0);
                     }
                     break;
             }

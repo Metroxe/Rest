@@ -13,6 +13,7 @@ import {OneDBlock} from "../../game_objects/OneDimension/OneDBlock";
 import {OneDKey} from "../../game_objects/OneDimension/OneDKey";
 import {OneDEnemyWalker} from "../../game_objects/OneDimension/OneDEnemyWalker";
 import {OneDEnemyShooter} from "../../game_objects/OneDimension/OneDEnemyShooter";
+import {EightBitPlayer} from "../../game_objects/players/EightBitPlayer";
 
 abstract class Level extends Phaser.State {
     protected gameObjectArray: GameObject[];
@@ -158,6 +159,9 @@ abstract class Level extends Phaser.State {
                 break;
             case "OneDEnemyShooter":
                 gameObject = new OneDEnemyShooter({...gameObjectProp});
+                break;
+            case "eightBitPlayer":
+                gameObject = new EightBitPlayer({...gameObjectProp});
                 break;
         }
 

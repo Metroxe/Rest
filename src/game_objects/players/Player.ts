@@ -33,8 +33,8 @@ abstract class Player extends GameObject {
     }
 
     public update(): void {
-        super.update();
         this.controlHandler();
+        super.update();
     }
 
     public addToInventory(key: string): number {
@@ -118,12 +118,22 @@ abstract class Player extends GameObject {
     private controlHandler(): void {
 
         const moving: boolean = this.sprite.body.isMoving;
+        const up: boolean = (this.w.isDown || this.cursors.up.isDown);
+        const right: boolean = (this.d.isDown || this.cursors.right.isDown);
+        const left: boolean = (this.a.isDown || this.cursors.left.isDown);
+        const down: boolean = (this.s.isDown || this.cursors.down.isDown);
+
+        if (up) {
+            this.sprite.body.facing = Phaser.UP;
+        } else if (right) {
+            this.sprite.body.facing = Phaser.RIGHT;
+        } else if (left) {
+            this.sprite.body.facing = Phaser.LEFT;
+        } else if (down) {
+            this.sprite.body.facing = Phaser.DOWN;
+        }
 
         if (!moving && !this.moving) {
-            const up: boolean = (this.w.isDown || this.cursors.up.isDown);
-            const right: boolean = (this.d.isDown || this.cursors.right.isDown);
-            const left: boolean = (this.a.isDown || this.cursors.left.isDown);
-            const down: boolean = (this.s.isDown || this.cursors.down.isDown);
             if (up) {
                 this.sprite.body.facing = Phaser.UP;
                 this.sprite.body.faceTop = true;
