@@ -20,7 +20,7 @@ abstract class Switch extends GameObject {
 
     public collideWithPlayer(): void {
         // TODO
-        //this.handleSfx(this.collideAudio);
+        this.handleSfx(this.collideAudio);
         const targetDoor: Door = this.level.getDoor(this.openDoorID);
         targetDoor.unlock();
         const targetSwitchDoor: Door = this.level.getSwitchDoor(this.openSwitchDoorID);
