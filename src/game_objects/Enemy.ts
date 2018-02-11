@@ -1,11 +1,9 @@
 import {GameObject, IGameObjectProps} from "./GameObject";
 
 abstract class Enemy extends GameObject {
-    protected destinationState: string;
 
-    constructor(props: IEnemyObjectProps) {
+    constructor(props: IGameObjectProps) {
         super(props);
-
         this.collideWithPlayer = this.collideWithPlayer.bind(this);
     }
 
@@ -14,7 +12,4 @@ abstract class Enemy extends GameObject {
     }
 }
 
-interface IEnemyObjectProps extends IGameObjectProps {
-}
-
-export {IEnemyObjectProps, Enemy};
+export {Enemy};

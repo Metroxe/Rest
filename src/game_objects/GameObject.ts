@@ -2,10 +2,10 @@ import {Level} from "../states/Levels/Level";
 
 abstract class GameObject {
     public sprite: Phaser.Sprite;
+    public collidable: boolean = true;
     protected game: Phaser.Game;
     protected props: IGameObjectProps;
     protected level: Level;
-    protected collidable: boolean = true;
     protected startingFrame: number = 0;
     protected abstract filePath: string | string[];
     protected abstract key: string;
@@ -19,6 +19,7 @@ abstract class GameObject {
         this.handleAnimation = this.handleAnimation.bind(this);
         this.handleSfx = this.handleSfx.bind(this);
         this.create = this.create.bind(this);
+        this.update = this.update.bind(this);
     }
 
     public attachLevel(level: Level): void {
@@ -72,6 +73,7 @@ abstract class GameObject {
 
     protected handleSfx(key: string): void {
         const sfx: any = this.props.game.add.audio(key);
+        sfx.volume = 0.1;
         sfx.play();
     }
 
@@ -84,6 +86,7 @@ interface IGameObjectProps {
     game: Phaser.Game;
     x: number;
     y: number;
+    frame?: number;
 }
 
 export {IGameObjectProps, GameObject};

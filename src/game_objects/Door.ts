@@ -3,6 +3,7 @@ import {GameObject, IGameObjectProps} from "./GameObject";
 abstract class Door extends GameObject {
     protected destinationState: string;
     protected doorID: string;
+    protected switchDoorID: string;
     protected openFrame: number;
     protected isLocked: boolean = true;
 
@@ -10,7 +11,8 @@ abstract class Door extends GameObject {
         super(props);
         this.destinationState = props.destination;
         this.doorID = props.doorID;
-        console.log("door id: " + this.doorID);
+        this.switchDoorID = props.switchDoorID;
+        //console.log("door id: " + this.doorID);
 
         this.collideWithPlayer = this.collideWithPlayer.bind(this);
     }
@@ -22,16 +24,22 @@ abstract class Door extends GameObject {
         }
     }
 
-    public unlock(): void {
-        this.isLocked = false;
+    public unlock(isSwitch: boolean = false): void {
+        if (isSwitch === true) {
+            this.collidable = false;
+            this.sprite.x = -9999;
+        } else {
+            this.isLocked = false;
 
-        this.sprite.frame = this.openFrame;
+            this.sprite.frame = this.openFrame;
+        }
     }
 }
 
 interface IDoorObjectProps extends IGameObjectProps {
     destination: string;
     doorID: string;
+    switchDoorID?: string;
 }
 
 export {IDoorObjectProps, Door};

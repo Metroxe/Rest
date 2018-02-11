@@ -1,6 +1,6 @@
-import {Enemy} from "../Enemy";
+import {Walker} from "../Walker";
 
-class OneDEnemyWalker extends Enemy  {
+class OneDEnemyWalker extends Walker  {
     protected filePath: string = "assets/characters_one_dimension.png";
     protected key: string = "OneDEnemyWalker";
     protected frameWidth: number = 128;
