@@ -22,7 +22,7 @@ abstract class Key extends GameObject {
         const targetDoor: Door = this.level.getDoor(this.openDoorID);
         targetDoor.unlock();
 
-        this.sprite.destroy();
+        this.sprite.x = -9999;
     }
 }
 

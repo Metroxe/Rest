@@ -2,6 +2,7 @@ import {GameObject} from "./GameObject";
 import {Player} from "./players/Player";
 
 abstract class Block extends GameObject {
+    public collidable: boolean = true;
     protected destinationState: string;
     private movementTime: number = 300;
     private nextValue: { x: number, y: number };
@@ -12,7 +13,7 @@ abstract class Block extends GameObject {
         this.moveOver = this.moveOver.bind(this);
         this.collideWithPlayer = this.collideWithPlayer.bind(this);
         this.update = this.update.bind(this);
-        //this.setNotImmovable();
+        // this.setNotImmovable();
         this.sprite.body.stopVelocityOnCollide = false;
         this.sprite.body.speed = 128;
         this.sprite.body.onMoveComplete.add(this.moveOver);

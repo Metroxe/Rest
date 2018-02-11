@@ -43,7 +43,9 @@ class Gamogori {
         this.game.load.json("lvl1-3", "tiled_maps/dream_1/lvl1-3.json");
         this.game.load.json("lvl1-4", "tiled_maps/dream_1/lvl1-4.json");
         this.game.load.image("keyIcon", "assets/pink.png");
+        this.game.load.image("keyIcon", "assets/pink.png");
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        this.game.load.spritesheet("bullet", "assets/bullet.png", 128, 128);
         // new TestObject({x: 0, y: 0, game: this.game}).preload();
     }
 
@@ -54,7 +56,7 @@ class Gamogori {
         this.game.state.add("lvl1-2", DreamOneToTwo);
         this.game.state.add("lvl1-3", DreamOneToThree);
         this.game.state.add("lvl1-4", DreamOneToFour);
-        this.game.state.start("Introduction");
+        this.game.state.start("lvl1-3");
     }
 
     private update(): void {

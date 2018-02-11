@@ -1,6 +1,6 @@
-import {Enemy} from "../Enemy";
+import {Shooter} from "../Shooter";
 
-class OneDEnemyShooter extends Enemy  {
+class OneDEnemyShooter extends Shooter  {
     protected filePath: string = "assets/characters_one_dimension.png";
     protected key: string = "OneDEnemyShooter";
     protected frameWidth: number = 128;
