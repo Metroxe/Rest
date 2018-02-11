@@ -6,6 +6,7 @@ class OneDBlock extends Block {
     protected frameWidth: number = 128;
     protected frameHeight: number = 128;
     protected startingFrame: number = 2;
+    // protected collidable: boolean = true;
 }
 
 export {OneDBlock};

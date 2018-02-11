@@ -2,10 +2,10 @@ import {Level} from "../states/Levels/Level";
 
 abstract class GameObject {
     public sprite: Phaser.Sprite;
+    public collidable: boolean = true;
     protected game: Phaser.Game;
     protected props: IGameObjectProps;
     protected level: Level;
-    protected collidable: boolean = true;
     protected startingFrame: number = 0;
     protected abstract filePath: string | string[];
     protected abstract key: string;
@@ -56,6 +56,10 @@ abstract class GameObject {
 
     public enablePhysics(): void {
         this.props.game.physics.arcade.enable(this.sprite);
+    }
+
+    public getKey(): string {
+        return this.key;
     }
 
     protected collideWithPlayer(): void {
