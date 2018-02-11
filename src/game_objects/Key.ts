@@ -10,6 +10,7 @@ abstract class Key extends GameObject {
     constructor(props: IKeyObjectProps) {
         super(props);
         this.openDoorID = props.openDoorID;
+        console.log("open doorID: " + this.openDoorID);
 
         this.collideWithPlayer = this.collideWithPlayer.bind(this);
     }
