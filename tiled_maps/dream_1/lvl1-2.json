@@ -1,4 +1,5 @@
 { "height":18,
+ "infinite":false,
  "layers":[
         {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -98,18 +99,22 @@
                  "properties":
                     {
                      "enemyID":"A",
-                     "gameObjectID":"OneDEnemyWalker"
+                     "gameObjectID":"OneDEnemyWalker",
+                     "offset":512,
+                     "xAxis":true
                     },
                  "propertytypes":
                     {
                      "enemyID":"string",
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "offset":"int",
+                     "xAxis":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":640,
+                 "x":384,
                  "y":1024
                 }, 
                 {
@@ -142,18 +147,22 @@
                  "properties":
                     {
                      "enemyID":"B",
-                     "gameObjectID":"OneDEnemyWalker"
+                     "gameObjectID":"OneDEnemyWalker",
+                     "offset":512,
+                     "xAxis":true
                     },
                  "propertytypes":
                     {
                      "enemyID":"string",
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "offset":"int",
+                     "xAxis":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":896,
+                 "x":640,
                  "y":1408
                 }],
          "opacity":1,
@@ -165,7 +174,7 @@
  "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.0.3",
+ "tiledversion":"1.1.2",
  "tileheight":128,
  "tilesets":[
         {

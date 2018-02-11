@@ -1,4 +1,5 @@
 { "height":11,
+ "infinite":false,
  "layers":[
         {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -34,12 +35,14 @@
                  "properties":
                     {
                      "destination":"",
-                     "gameObjectID":"OneDDoor"
+                     "gameObjectID":"OneDDoor",
+                     "open":true
                     },
                  "propertytypes":
                     {
                      "destination":"string",
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "open":"bool"
                     },
                  "rotation":0,
                  "type":"",
@@ -76,19 +79,23 @@
                  "properties":
                     {
                      "enemyID":"B",
-                     "gameObjectID":"OneDEnemyWalker"
+                     "gameObjectID":"OneDEnemyWalker",
+                     "offset":896,
+                     "xAxis":false
                     },
                  "propertytypes":
                     {
                      "enemyID":"string",
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "offset":"int",
+                     "xAxis":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
                  "x":640,
-                 "y":640
+                 "y":384
                 }, 
                 {
                  "gid":6,
@@ -118,18 +125,22 @@
                  "properties":
                     {
                      "enemyID":"A",
-                     "gameObjectID":"OneDEnemyWalker"
+                     "gameObjectID":"OneDEnemyWalker",
+                     "offset":512,
+                     "xAxis":true
                     },
                  "propertytypes":
                     {
                      "enemyID":"string",
-                     "gameObjectID":"string"
+                     "gameObjectID":"string",
+                     "offset":"int",
+                     "xAxis":"bool"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":384,
+                 "x":128,
                  "y":1280
                 }, 
                 {
@@ -161,7 +172,7 @@
  "nextobjectid":32,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.0.3",
+ "tiledversion":"1.1.2",
  "tileheight":128,
  "tilesets":[
         {
