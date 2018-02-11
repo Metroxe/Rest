@@ -1,9 +1,11 @@
 import {GameObject, IGameObjectProps} from "../GameObject";
 import InputHandler = Phaser.InputHandler;
 import {Inventory} from "../../inventory";
+import {Door} from "../Door";
 
 abstract class Player extends GameObject {
     public speed: number = 128;
+    protected door: Door;
     private inputHandler: InputHandler;
     private w: Phaser.Key;
     private a: Phaser.Key;
@@ -30,6 +32,8 @@ abstract class Player extends GameObject {
         this.sprite.body.acceleration = 0;
         this.sprite.body.drag = 0;
         this.sprite.body.friction = 0;
+        console.log("PLAYER THIS: ", this);
+        this.door = new Door({player: this});
     }
 
     public update(): void {
@@ -56,7 +60,14 @@ abstract class Player extends GameObject {
         return newCount;
     }
 
+    public viewInventory(key: string): number {
+        const inventory: Inventory = Inventory.getInstance();
+        const newCount: number = inventory.getItem(key);
+        return newCount;
+    }
+
     public die(): void {
+        this.removeFromInventory("keys");
         const livesLeft: number = this.removeFromInventory("lives");
 
         // play animation

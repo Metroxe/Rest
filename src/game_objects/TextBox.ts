@@ -18,16 +18,14 @@ class TextBox {
         this.text = this.game.add.text(32, 32, "", { font: "15px Arial", fill: "#19de65", wordWrap: true, wordWrapWidth: 450});
         this.text.z = 9999;
         this.text.setTextBounds(16, 16, 450, 568);
+        this.callback = callback;
         this.nextLine();
-    }
-
-    public addEnter(): void {
-        this.enter = this.game.input.keyboard.addKey(Phaser.Phaser.Keyboard.ENTER);
     }
 
     private nextLine(): void {
         if (this.lineIndex === this.content.length) {
-            return this.callback();
+            setTimeout(this.callback, 3000);
+            return;
         }
 
         //  Split the current line on letter, so one letter per array element
