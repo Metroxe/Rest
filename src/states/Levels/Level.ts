@@ -4,10 +4,12 @@ import {Player} from "../../game_objects/players/Player";
 import {OneDPlayer} from "../../game_objects/players/OneDPlayer";
 import {
     OneDimensionGround, OneDimensionWallGray,
-    OneDimensionWallOrange
+    OneDimensionWallOrange,
 } from "../../game_objects/OneDimension/OneDWall";
 import {OneDDoor} from "../../game_objects/OneDimension/OneDDoor";
 import {UserInterface} from "../../UserInterface";
+import {OneDBlock} from "../../game_objects/OneDimension/OneDBlock";
+import {OneDKey} from "../../game_objects/OneDimension/OneDKey";
 
 abstract class Level extends Phaser.State {
     protected gameObjectArray: GameObject[];
@@ -65,6 +67,10 @@ abstract class Level extends Phaser.State {
 
     public followPlayer(game: Phaser.Game): void {
         game.camera.follow(this.player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+    }
+
+    public getTiledJSON(game: Phaser.game): void {
+        return game.cache.getJSON(this.tiledJSONKey, false);
     }
 
     protected renderMap(game: Phaser.Game): void {
@@ -130,7 +136,13 @@ abstract class Level extends Phaser.State {
                 break;
             case "OneDDoor":
                 gameObject = new OneDDoor({...gameObjectProp, destination: additional.destination});
-
+                break;
+            case "OneDBlock":
+                gameObject = new OneDBlock({...gameObjectProp, destination: additional.destination});
+                break;
+            case "OneDKey":
+                gameObject = new OneDKey({...gameObjectProp, destination: additional.destination});
+                break;
         }
 
         if (gameObject) {

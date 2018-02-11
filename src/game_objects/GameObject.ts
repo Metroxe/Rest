@@ -14,6 +14,8 @@ abstract class GameObject {
 
     constructor(props: IGameObjectProps) {
        this.props = props;
+
+       this.handleSfx = this.handleSfx.bind(this);
     }
 
     public attachLevel(level: Level): void {
@@ -58,6 +60,11 @@ abstract class GameObject {
 
     protected handleAnimation(): void {
         // Write in child
+    }
+
+    protected handleSfx(key: string): void {
+        const sfx: any = this.props.game.add.audio(key);
+        sfx.play();
     }
 
     protected setNotImmovable(): void {
