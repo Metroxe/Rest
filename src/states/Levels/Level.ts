@@ -173,7 +173,6 @@ abstract class Level extends Phaser.State {
                         }, obj.x, obj.y - json.tileheight, game, obj.properties);
                     } else {
                         this.renderGameObject(obj.properties.gameObjectID, obj.x, obj.y - json.tileheight, game, obj.properties);
-                        //console.log(obj.properties);
                     }
                 });
             }
@@ -184,9 +183,11 @@ abstract class Level extends Phaser.State {
         let gameObject: GameObject;
 
         let frame: number = null;
-        if (additional.frame) {
-            frame = additional.frame;
-            delete additional.frame;
+        if (additional) {
+            if (additional.frame) {
+                frame = additional.frame;
+                delete additional.frame;
+            }
         }
 
         const gameObjectProp: IGameObjectProps = {
