@@ -6,6 +6,7 @@ abstract class GameObject {
     protected props: IGameObjectProps;
     protected level: Level;
     protected collidable: boolean = true;
+    protected startingFrame: number = 0;
     protected abstract filePath: string;
     protected abstract key: string;
     protected abstract frameWidth: number;
@@ -13,6 +14,8 @@ abstract class GameObject {
 
     constructor(props: IGameObjectProps) {
        this.props = props;
+
+       this.handleSfx = this.handleSfx.bind(this);
     }
 
     public attachLevel(level: Level): void {
@@ -24,7 +27,7 @@ abstract class GameObject {
     }
 
     public create(): void {
-        this.sprite = this.props.game.add.sprite(this.props.x, this.props.y, this.key);
+        this.sprite = this.props.game.add.sprite(this.props.x, this.props.y, this.key, this.startingFrame);
         this.enablePhysics();
         this.sprite.body.immovable = true;
     }
@@ -57,6 +60,11 @@ abstract class GameObject {
 
     protected handleAnimation(): void {
         // Write in child
+    }
+
+    protected handleSfx(key: string): void {
+        const sfx: any = this.props.game.add.audio(key);
+        sfx.play();
     }
 
     protected setNotImmovable(): void {
